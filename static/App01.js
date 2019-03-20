@@ -32,8 +32,13 @@ var MyComponent = function (_React$Component) {
         React.createElement(
           "h1",
           null,
-          "My View 01"
-        )
+          React.createElement(
+            "a",
+            { href: "/index.html" },
+            "OverBored"
+          )
+        ),
+        React.createElement("hr", null)
       );
     }
   }]);
