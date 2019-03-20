@@ -33,13 +33,114 @@ var MyComponent = function (_React$Component) {
           "h1",
           null,
           "My View 03"
-        )
+
+        ),
+        React.createElement("hr", null),
+        React.createElement(FilterList, null),
+        React.createElement(ResultsTable, null)
       );
     }
   }]);
 
   return MyComponent;
 }(React.Component);
+
+
+var FilterList = function (_React$Component2) {
+  _inherits(FilterList, _React$Component2);
+
+  function FilterList() {
+    _classCallCheck(this, FilterList);
+
+    return _possibleConstructorReturn(this, (FilterList.__proto__ || Object.getPrototypeOf(FilterList)).apply(this, arguments));
+  }
+
+  _createClass(FilterList, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        null,
+        "List of filters"
+      );
+    }
+  }]);
+
+  return FilterList;
+}(React.Component);
+
+var ResultsTable = function (_React$Component3) {
+  _inherits(ResultsTable, _React$Component3);
+
+  function ResultsTable() {
+    _classCallCheck(this, ResultsTable);
+
+    return _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).apply(this, arguments));
+  }
+
+  _createClass(ResultsTable, [{
+    key: "render",
+    value: function render() {
+      var borderedStyle = { border: "1px Solid Silver", padding: 6 };
+      return React.createElement(
+        "table",
+        null,
+        React.createElement(
+          "thead",
+          null,
+          React.createElement(
+            "tr",
+            null,
+            React.createElement(
+              "th",
+              { style: borderedStyle },
+              "Results"
+            )
+          )
+        ),
+        React.createElement(
+          "tbody",
+          null,
+          React.createElement(ResultRow, { result_number: 1,
+            result_name: "Blue Wall" }),
+          React.createElement(ResultRow, { result_number: 2,
+            result_name: "Totman Gym" })
+        )
+      );
+    }
+  }]);
+
+  return ResultsTable;
+}(React.Component);
+
+var ResultRow = function (_React$Component4) {
+  _inherits(ResultRow, _React$Component4);
+
+  function ResultRow() {
+    _classCallCheck(this, ResultRow);
+
+    return _possibleConstructorReturn(this, (ResultRow.__proto__ || Object.getPrototypeOf(ResultRow)).apply(this, arguments));
+  }
+
+  _createClass(ResultRow, [{
+    key: "render",
+    value: function render() {
+      var borderedStyle = { border: "1px Solid Silver", padding: 9 };
+      return React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "td",
+          { style: borderedStyle },
+          this.props.result_name
+        )
+      );
+    }
+  }]);
+
+  return ResultRow;
+}(React.Component);
+
 
 // This renders the JSX component inside the content node:
 
