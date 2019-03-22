@@ -33,7 +33,6 @@ var MyComponent = function (_React$Component) {
           "h1",
           null,
           "My View 03"
-
         ),
         React.createElement("hr", null),
         React.createElement(FilterList, null),
@@ -44,7 +43,6 @@ var MyComponent = function (_React$Component) {
 
   return MyComponent;
 }(React.Component);
-
 
 var FilterList = function (_React$Component2) {
   _inherits(FilterList, _React$Component2);
@@ -140,7 +138,6 @@ var ResultRow = function (_React$Component4) {
 
   return ResultRow;
 }(React.Component);
-
 
 // This renders the JSX component inside the content node:
 
