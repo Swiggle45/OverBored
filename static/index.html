@@ -3,18 +3,52 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>OverBored Home</title>
-    <h1>OverBored</h1>
-    <hr />
+    <title>OverBored</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js">
+    </script>
+    <style>
+        body {
+            background-color: #001e2d;
+        }
+        header {
+            background-color: #3b3d42;
+            height: 80px;
+            width: 110%;
+            margin-left: -10px;
+            margin-top: -35px;
+        }
+        header h1 {
+            font-size: 48px;
+            color: #ffffff;
+            padding: 10px;
+            padding-left: 20px;
+        }
+        #land {
+            text-align: center;
+        }
+        #land p {
+            color: #ffffff;
+            font-size: 32px;
+            margin: 10%;
+        }
+        #land a {
+            padding: 10px;
+            font-size: 24px;
+            background-color: #0071ff;
+            margin: 20px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+    </style>
 </head>
 
 <body>
-    <ul>
-        <li><a href="/view01.html">View 01</a></li>
-        <li><a href="/view02.html">View 02</a></li>
-        <li><a href="/view03.html">View 03</a></li>
-        <li><a href="/landing.html">Landing Page</a></li>
-    </ul>
+    <!-- this is where our component will appear -->
+    <div id="contents"></div>
+    <script src="/landing.js"></script>
 </body>
 
 </html>
