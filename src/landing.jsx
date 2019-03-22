@@ -21,7 +21,8 @@ class MyComponent extends React.Component {
           <p>
             Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you're willing to travel. Have fun!
           </p>
-          <a href="/view02.html">Start your Search</a>
+          <a href="/filters.html">Start your Search</a>
+          <a href="/results.html">View Results</a>
         </div>
       </main>
     );
