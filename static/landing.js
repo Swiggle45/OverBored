@@ -58,7 +58,7 @@ var MyComponent = function (_React$Component) {
           React.createElement(
             "a",
             { href: "/results.html" },
-            "results"
+            "View Results"
           )
         )
       );
