@@ -38,17 +38,36 @@ var MyComponent = function (_React$Component) {
         });
       });
       return React.createElement(
-        "div",
+        "main",
         null,
         React.createElement(
-          "h1",
+          "header",
           null,
-
           "Results"
+          React.createElement(
+            "h1",
+            null,
+            React.createElement(
+              "a",
+              { href: "/index.html" },
+              "OverBored"
+            )
+          )
         ),
-        React.createElement("hr", null),
-        React.createElement(FilterList, null),
-        React.createElement(ResultsTable, null)
+        React.createElement(
+          "div",
+          { id: "results" },
+          React.createElement(
+            "div",
+            { id: "head" },
+            React.createElement(FilterList, null)
+          ),
+          React.createElement(
+            "div",
+            { id: "table" },
+            React.createElement(ResultsTable, null)
+          )
+        )
       );
     }
   }]);

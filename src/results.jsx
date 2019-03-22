@@ -26,12 +26,19 @@ class MyComponent extends React.Component {
       />
     })
     return (
-      <div>
-        <h1>Results</h1>
-        <hr />
-        <FilterList /> 
-        <ResultsTable />
-      </div>
+      <main>
+        <header>
+          <h1><a href="/index.html">OverBored</a></h1>
+        </header>
+        <div id="results">
+          <div id="head">
+            <FilterList /> 
+          </div>
+          <div id="table">
+            <ResultsTable />
+          </div>
+        </div>
+      </main>
     );
   }
 }

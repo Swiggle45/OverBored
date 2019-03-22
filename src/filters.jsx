@@ -13,10 +13,12 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1><a href="/index.html">OverBored</a></h1>
-        <hr />
-      </div>
+      <main>
+        <header>
+          <h1><a href="/index.html">OverBored</a></h1>
+        </header>
+        
+      </main>
     );
   }
 }

@@ -27,18 +27,21 @@ var Header = function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement(
-        "div",
+        "main",
         null,
         React.createElement(
-          "h1",
+          "header",
           null,
           React.createElement(
-            "a",
-            { href: "/index.html" },
-            "OverBored"
+            "h1",
+            null,
+            React.createElement(
+              "a",
+              { href: "/index.html" },
+              "OverBored"
+            )
           )
-        ),
-        React.createElement("hr", null)
+        )
       );
     }
   }]);
