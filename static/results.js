@@ -27,16 +27,35 @@ var MyComponent = function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement(
-        "div",
+        "main",
         null,
         React.createElement(
-          "h1",
+          "header",
           null,
-          "My View 03"
+          React.createElement(
+            "h1",
+            null,
+            React.createElement(
+              "a",
+              { href: "/index.html" },
+              "OverBored"
+            )
+          )
         ),
-        React.createElement("hr", null),
-        React.createElement(FilterList, null),
-        React.createElement(ResultsTable, null)
+        React.createElement(
+          "div",
+          { id: "results" },
+          React.createElement(
+            "div",
+            { id: "head" },
+            React.createElement(FilterList, null)
+          ),
+          React.createElement(
+            "div",
+            { id: "table" },
+            React.createElement(ResultsTable, null)
+          )
+        )
       );
     }
   }]);
@@ -79,7 +98,7 @@ var ResultsTable = function (_React$Component3) {
   _createClass(ResultsTable, [{
     key: "render",
     value: function render() {
-      var borderedStyle = { border: "1px Solid Silver", padding: 6 };
+      var borderedStyle = { border: "1px Solid Silver", padding: 10 };
       return React.createElement(
         "table",
         null,
@@ -123,7 +142,7 @@ var ResultRow = function (_React$Component4) {
   _createClass(ResultRow, [{
     key: "render",
     value: function render() {
-      var borderedStyle = { border: "1px Solid Silver", padding: 9 };
+      var borderedStyle = { border: "1px Solid Silver", padding: 10 };
       return React.createElement(
         "tr",
         null,

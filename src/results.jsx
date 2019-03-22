@@ -13,12 +13,19 @@ class MyComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>My View 03</h1>
-        <hr />
-        <FilterList /> 
-        <ResultsTable />
-      </div>
+      <main>
+        <header>
+          <h1><a href="/index.html">OverBored</a></h1>
+        </header>
+        <div id="results">
+          <div id="head">
+            <FilterList /> 
+          </div>
+          <div id="table">
+            <ResultsTable />
+          </div>
+        </div>
+      </main>
     );
   }
 }
@@ -35,7 +42,7 @@ class FilterList extends React.Component {
 
 class ResultsTable extends React.Component {
   render(){
-    const borderedStyle = {border: "1px Solid Silver", padding: 6};
+    const borderedStyle = {border: "1px Solid Silver", padding: 10};
     return (
       <table>
         <thead>
@@ -56,7 +63,7 @@ class ResultsTable extends React.Component {
 
 class ResultRow extends React.Component{
   render(){
-    const borderedStyle = {border: "1px Solid Silver", padding: 9}
+    const borderedStyle = {border: "1px Solid Silver", padding: 10}
     return (
       <tr>
         <td style = {borderedStyle}>{this.props.result_name}</td>
