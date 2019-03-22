@@ -48,8 +48,13 @@ var MyComponent = function (_React$Component) {
           ),
           React.createElement(
             "a",
-            { href: "/view02.html" },
+            { href: "/filters.html" },
             "Start your Search"
+          ),
+          React.createElement(
+            "a",
+            { href: "/results.html" },
+            "View Results"
           )
         )
       );

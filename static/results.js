@@ -13,10 +13,6 @@ var state = [];
 
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
-// let blueWall = {name: "Blue Wall", price:"$$", distance:"On Campus", numberOfPeople:"Any", activityLvl:"low"};
-// let blueWallJson = JSON.stringify(blueWall);
-// let recCenter = {name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high"};
-// let recCenterJson = JSON.stringify(recCenter);
 
 var MyComponent = function (_React$Component) {
   _inherits(MyComponent, _React$Component);
@@ -35,6 +31,7 @@ var MyComponent = function (_React$Component) {
   _createClass(MyComponent, [{
     key: "render",
     value: function render() {
+
       var rows = this.state.data.map(function (location) {
         return React.createElement(LocationRow, { key: location.name,
           data: location
@@ -46,6 +43,7 @@ var MyComponent = function (_React$Component) {
         React.createElement(
           "h1",
           null,
+
           "Results"
         ),
         React.createElement("hr", null),
