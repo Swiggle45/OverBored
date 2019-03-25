@@ -8,26 +8,50 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// This is a place holder for the initial application state.
 var state = [];
+
 // This grabs the DOM element to be used to mount React components.
 var headerNode = document.getElementById("header");
+var contentNode = document.getElementById("contents");
 
-var Filters = function (_React$Component) {
-  _inherits(Filters, _React$Component);
+var Header = function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+  }
+
+  _createClass(Header, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "header",
+        null,
+        React.createElement(
+          "h1",
+          null,
+          React.createElement(
+            "a",
+            { href: "/index.html" },
+            "OverBored"
+          )
+        )
+      );
+    }
+  }]);
+
+  return Header;
+}(React.Component);
+
+var Filters = function (_React$Component2) {
+  _inherits(Filters, _React$Component2);
 
   function Filters() {
     _classCallCheck(this, Filters);
 
-    var _this = _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this));
-
-    _this.state = {
-      price: 0,
-      distance: 0,
-      numberOfPeople: "Any",
-      activityLvl: ""
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this));
   }
 
   _createClass(Filters, [{
@@ -37,19 +61,30 @@ var Filters = function (_React$Component) {
         "main",
         null,
         React.createElement(
-          "header",
+          "p",
           null,
-          React.createElement(
-            "h1",
-            null,
-            React.createElement(
-              "a",
-              { href: "/index.html" },
-              "OverBored"
-            )
-          )
+          "Distance"
         ),
-        React.createElement("div", null)
+        React.createElement(
+          "p",
+          null,
+          "Price Range"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Number of People"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Activity Level"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Over 21?"
+        )
       );
     }
   }]);
@@ -60,4 +95,5 @@ var Filters = function (_React$Component) {
 // This renders the JSX component inside the content node:
 
 
-ReactDOM.render(React.createElement(Filters, null), headerNode);
+ReactDOM.render(React.createElement(Header, null), headerNode);
+ReactDOM.render(React.createElement(Filters, null), contentNode);
