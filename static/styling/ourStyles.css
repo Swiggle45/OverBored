@@ -4,7 +4,7 @@ body {
 header {
     background-color: #3b3d42;
     height: 80px;
-    width: 100%;
+    width: 102%;
     margin-left: -10px;
     margin-top: -35px;
 }
@@ -37,16 +37,17 @@ h1 a:visited {
 #results table {
     font-size: 24px;
     color: #ffffff;
+    text-align: left;
 }
-#land {
+main {
     text-align: center;
 }
-#land p {
+main p {
     color: #ffffff;
     font-size: 32px;
     margin: 10%;
 }
-#land a {
+main a {
     padding: 10px;
     font-size: 24px;
     background-color: #0071ff;
