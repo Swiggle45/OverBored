@@ -43,7 +43,7 @@ var MyComponent = function (_React$Component) {
         React.createElement(
           "header",
           null,
-          "Results"
+          "Results",
           React.createElement(
             "h1",
             null,

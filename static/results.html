@@ -3,52 +3,21 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>OverBored: Results</title>
+    <title>View 03</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js">
     </script>
     <style>
-        body {
-            background-color: #001e2d;
+        table.bordered-table th,
+        td {
+            border: 1px solid silver;
+            padding: 4px;
         }
-        header {
-            background-color: #3b3d42;
-            height: 80px;
-            width: 110%;
-            margin-left: -10px;
-            margin-top: -35px;
-        }
-        header h1 {
-            font-size: 48px;
-            color: #ffffff;
-            padding: 10px;
-        }
-        h1 a {
-            font-size: 48px;
-            color: #ffffff;
-            padding: 10px;
-            text-decoration: none;
-        }
-        h1 a:visited {
-            font-size: 48px;
-            color: #ffffff;
-            padding: 10px;
-            text-decoration: none;
-        }
-        #results {
-            font-size: 24px;
-            color: #ffffff;
-            padding: 20px;
-        }
-        #results head {
-            font-size: 24px;
-            color: #ffffff;
-        }
-        #results table {
-            font-size: 24px;
-            color: #ffffff;
+
+        table.bordered-table {
+            border-collapse: collapse
         }
     </style>
 </head>
@@ -56,7 +25,7 @@
 <body>
     <!-- this is where our component will appear -->
     <div id="contents"></div>
-    <script src="/results.js"></script>
+    <script src="/App03.js"></script>
 </body>
 
 </html>
