@@ -35,7 +35,11 @@ var MyComponent = function (_React$Component) {
           React.createElement(
             "h1",
             null,
-            "OverBored"
+            React.createElement(
+              "a",
+              { href: "/index.html" },
+              "OverBored"
+            )
           )
         ),
         React.createElement(
@@ -48,8 +52,13 @@ var MyComponent = function (_React$Component) {
           ),
           React.createElement(
             "a",
-            { href: "/view02.html" },
+            { href: "/filters.html" },
             "Start your Search"
+          ),
+          React.createElement(
+            "a",
+            { href: "/results.html" },
+            "View Results"
           )
         )
       );

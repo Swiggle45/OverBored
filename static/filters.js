@@ -12,41 +12,44 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var state = [];
 
 // This grabs the DOM element to be used to mount React components.
-var contentNode = document.getElementById("contents");
+var headerNode = document.getElementById("header");
 
-var MyComponent = function (_React$Component) {
-  _inherits(MyComponent, _React$Component);
+var Header = function (_React$Component) {
+  _inherits(Header, _React$Component);
 
-  function MyComponent() {
-    _classCallCheck(this, MyComponent);
+  function Header() {
+    _classCallCheck(this, Header);
 
-    return _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
   }
 
-  _createClass(MyComponent, [{
+  _createClass(Header, [{
     key: "render",
     value: function render() {
       return React.createElement(
-        "div",
+        "main",
         null,
         React.createElement(
-          "h1",
+          "header",
           null,
           React.createElement(
-            "a",
-            { href: "/index.html" },
-            "OverBored"
+            "h1",
+            null,
+            React.createElement(
+              "a",
+              { href: "/index.html" },
+              "OverBored"
+            )
           )
-        ),
-        React.createElement("hr", null)
+        )
       );
     }
   }]);
 
-  return MyComponent;
+  return Header;
 }(React.Component);
 
 // This renders the JSX component inside the content node:
 
 
-ReactDOM.render(React.createElement(MyComponent, null), contentNode);
+ReactDOM.render(React.createElement(Header, null), headerNode);

@@ -4,22 +4,24 @@ const state = [
 ];
 
 // This grabs the DOM element to be used to mount React components.
-var contentNode = document.getElementById("contents");
+var headerNode = document.getElementById("header");
 
-class MyComponent extends React.Component {
+class Header extends React.Component {
   constructor() {
     super();
   }
 
   render() {
     return (
-      <div>
-        <h1><a href="/index.html">OverBored</a></h1>
-        <hr />
-      </div>
+      <main>
+        <header>
+          <h1><a href="/index.html">OverBored</a></h1>
+        </header>
+        
+      </main>
     );
   }
 }
 
 // This renders the JSX component inside the content node:
-ReactDOM.render(<MyComponent />, contentNode);
+ReactDOM.render(<Header />, headerNode);

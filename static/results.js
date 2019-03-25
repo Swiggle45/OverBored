@@ -20,23 +20,52 @@ var MyComponent = function (_React$Component) {
   function MyComponent() {
     _classCallCheck(this, MyComponent);
 
-    return _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
+    var _this = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
+
+    _this.state = {
+      data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
+    };
+    return _this;
   }
 
   _createClass(MyComponent, [{
     key: "render",
     value: function render() {
+      var rows = this.state.data.map(function (location) {
+        return React.createElement(LocationRow, { key: location.name,
+          data: location
+        });
+      });
       return React.createElement(
-        "div",
+        "main",
         null,
         React.createElement(
-          "h1",
+          "header",
           null,
-          "My View 03"
+          React.createElement(
+            "h1",
+            null,
+            React.createElement(
+              "a",
+              { href: "/index.html" },
+              "OverBored"
+            )
+          )
         ),
-        React.createElement("hr", null),
-        React.createElement(FilterList, null),
-        React.createElement(ResultsTable, null)
+        React.createElement(
+          "div",
+          { id: "results" },
+          React.createElement(
+            "div",
+            { id: "head" },
+            React.createElement(FilterList, null)
+          ),
+          React.createElement(
+            "div",
+            { id: "table" },
+            React.createElement(ResultsTable, null)
+          )
+        )
       );
     }
   }]);
@@ -73,12 +102,22 @@ var ResultsTable = function (_React$Component3) {
   function ResultsTable() {
     _classCallCheck(this, ResultsTable);
 
-    return _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).apply(this, arguments));
+    var _this3 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
+
+    _this3.state = {
+      data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
+    };
+    return _this3;
   }
 
   _createClass(ResultsTable, [{
     key: "render",
     value: function render() {
+      var rows = this.state.data.map(function (location) {
+        return React.createElement(LocationRow, { key: location.name,
+          data: location
+        });
+      });
       var borderedStyle = { border: "1px Solid Silver", padding: 6 };
       return React.createElement(
         "table",
@@ -88,21 +127,38 @@ var ResultsTable = function (_React$Component3) {
           null,
           React.createElement(
             "tr",
-            null,
+            { style: borderedStyle },
             React.createElement(
               "th",
-              { style: borderedStyle },
-              "Results"
+              null,
+              "Location"
+            ),
+            React.createElement(
+              "th",
+              null,
+              "Price"
+            ),
+            React.createElement(
+              "th",
+              null,
+              "Distance"
+            ),
+            React.createElement(
+              "th",
+              null,
+              "Number of People"
+            ),
+            React.createElement(
+              "th",
+              null,
+              "Activity Level"
             )
           )
         ),
         React.createElement(
           "tbody",
           null,
-          React.createElement(ResultRow, { result_number: 1,
-            result_name: "Blue Wall" }),
-          React.createElement(ResultRow, { result_number: 2,
-            result_name: "Totman Gym" })
+          rows
         )
       );
     }
@@ -111,35 +167,37 @@ var ResultsTable = function (_React$Component3) {
   return ResultsTable;
 }(React.Component);
 
-var ResultRow = function (_React$Component4) {
-  _inherits(ResultRow, _React$Component4);
-
-  function ResultRow() {
-    _classCallCheck(this, ResultRow);
-
-    return _possibleConstructorReturn(this, (ResultRow.__proto__ || Object.getPrototypeOf(ResultRow)).apply(this, arguments));
-  }
-
-  _createClass(ResultRow, [{
-    key: "render",
-    value: function render() {
-      var borderedStyle = { border: "1px Solid Silver", padding: 9 };
-      return React.createElement(
-        "tr",
-        null,
-        React.createElement(
-          "td",
-          { style: borderedStyle },
-          this.props.result_name
-        )
-      );
-    }
-  }]);
-
-  return ResultRow;
-}(React.Component);
+var LocationRow = function LocationRow(props) {
+  return React.createElement(
+    "tr",
+    null,
+    React.createElement(
+      "td",
+      null,
+      props.data.name
+    ),
+    React.createElement(
+      "td",
+      null,
+      props.data.price
+    ),
+    React.createElement(
+      "td",
+      null,
+      props.data.distance
+    ),
+    React.createElement(
+      "td",
+      null,
+      props.data.numberOfPeople
+    ),
+    React.createElement(
+      "td",
+      null,
+      props.data.activityLvl
+    )
+  );
+};
 
 // This renders the JSX component inside the content node:
-
-
 ReactDOM.render(React.createElement(MyComponent, null), contentNode);
