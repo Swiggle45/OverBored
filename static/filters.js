@@ -13,6 +13,7 @@ var state = [];
 
 // This grabs the DOM element to be used to mount React components.
 var headerNode = document.getElementById("header");
+var contentNode = document.getElementById("contents");
 
 var Header = function (_React$Component) {
   _inherits(Header, _React$Component);
@@ -27,18 +28,13 @@ var Header = function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement(
-        "div",
+        "header",
         null,
         React.createElement(
           "h1",
           null,
-          React.createElement(
-            "a",
-            { href: "/index.html" },
-            "OverBored"
-          )
-        ),
-        React.createElement("hr", null)
+          "OverBored"
+        )
       );
     }
   }]);
@@ -46,7 +42,55 @@ var Header = function (_React$Component) {
   return Header;
 }(React.Component);
 
+var Filters = function (_React$Component2) {
+  _inherits(Filters, _React$Component2);
+
+  function Filters() {
+    _classCallCheck(this, Filters);
+
+    return _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this));
+  }
+
+  _createClass(Filters, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "main",
+        null,
+        React.createElement(
+          "p",
+          null,
+          "Distance"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Price Range"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Number of People"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Activity Level"
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Over 21?"
+        )
+      );
+    }
+  }]);
+
+  return Filters;
+}(React.Component);
+
 // This renders the JSX component inside the content node:
 
 
 ReactDOM.render(React.createElement(Header, null), headerNode);
+ReactDOM.render(React.createElement(Filters, null), contentNode);

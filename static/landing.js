@@ -12,10 +12,38 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var state = [];
 
 // This grabs the DOM element to be used to mount React components.
+var headerNode = document.getElementById("header");
 var contentNode = document.getElementById("contents");
 
-var MyComponent = function (_React$Component) {
-  _inherits(MyComponent, _React$Component);
+var Header = function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+  }
+
+  _createClass(Header, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "header",
+        null,
+        React.createElement(
+          "h1",
+          null,
+          "OverBored"
+        )
+      );
+    }
+  }]);
+
+  return Header;
+}(React.Component);
+
+var MyComponent = function (_React$Component2) {
+  _inherits(MyComponent, _React$Component2);
 
   function MyComponent() {
     _classCallCheck(this, MyComponent);
@@ -30,32 +58,19 @@ var MyComponent = function (_React$Component) {
         "main",
         null,
         React.createElement(
-          "header",
+          "p",
           null,
-          React.createElement(
-            "h1",
-            null,
-            "OverBored"
-          )
+          "Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you're willing to travel. Have fun!"
         ),
         React.createElement(
-          "div",
-          { id: "land" },
-          React.createElement(
-            "p",
-            null,
-            "Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you're willing to travel. Have fun!"
-          ),
-          React.createElement(
-            "a",
-            { href: "/filters.html" },
-            "Start your Search"
-          ),
-          React.createElement(
-            "a",
-            { href: "/results.html" },
-            "View Results"
-          )
+          "a",
+          { href: "/filters.html" },
+          "Start your Search"
+        ),
+        React.createElement(
+          "a",
+          { href: "/results.html" },
+          "View Results"
         )
       );
     }
@@ -64,7 +79,6 @@ var MyComponent = function (_React$Component) {
   return MyComponent;
 }(React.Component);
 
+ReactDOM.render(React.createElement(Header, null), headerNode);
 // This renders the JSX component inside the content node:
-
-
 ReactDOM.render(React.createElement(MyComponent, null), contentNode);

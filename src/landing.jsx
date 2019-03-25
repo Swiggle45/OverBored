@@ -4,7 +4,22 @@ const state = [
 ];
 
 // This grabs the DOM element to be used to mount React components.
+var headerNode = document.getElementById("header");
 var contentNode = document.getElementById("contents");
+
+class Header extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+        <header>
+          <h1>OverBored</h1>
+        </header>
+    );
+  }
+}
 
 class MyComponent extends React.Component {
   constructor() {
@@ -14,20 +29,16 @@ class MyComponent extends React.Component {
   render() {
     return (
       <main>
-        <header>
-          <h1>OverBored</h1>
-        </header>
-        <div id="land">
           <p>
               Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you're willing to travel. Have fun!
           </p>
           <a href="/filters.html">Start your Search</a>
           <a href="/results.html">View Results</a>
-        </div>
       </main>
     );
   }
 }
 
+ReactDOM.render(<Header />, headerNode);
 // This renders the JSX component inside the content node:
 ReactDOM.render(<MyComponent />, contentNode);
