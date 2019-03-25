@@ -10,20 +10,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // This is a place holder for the initial application state.
 var state = [];
-
 // This grabs the DOM element to be used to mount React components.
 var headerNode = document.getElementById("header");
 
-var Header = function (_React$Component) {
-  _inherits(Header, _React$Component);
+var Filters = function (_React$Component) {
+  _inherits(Filters, _React$Component);
 
-  function Header() {
-    _classCallCheck(this, Header);
+  function Filters() {
+    _classCallCheck(this, Filters);
 
-    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+    var _this = _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this));
+
+    _this.state = {
+      price: 0,
+      distance: 0,
+      numberOfPeople: "Any",
+      activityLvl: ""
+    };
+    return _this;
   }
 
-  _createClass(Header, [{
+  _createClass(Filters, [{
     key: "render",
     value: function render() {
       return React.createElement(
@@ -41,15 +48,16 @@ var Header = function (_React$Component) {
               "OverBored"
             )
           )
-        )
+        ),
+        React.createElement("div", null)
       );
     }
   }]);
 
-  return Header;
+  return Filters;
 }(React.Component);
 
 // This renders the JSX component inside the content node:
 
 
-ReactDOM.render(React.createElement(Header, null), headerNode);
+ReactDOM.render(React.createElement(Filters, null), headerNode);

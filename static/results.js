@@ -31,7 +31,6 @@ var MyComponent = function (_React$Component) {
   _createClass(MyComponent, [{
     key: "render",
     value: function render() {
-
       var rows = this.state.data.map(function (location) {
         return React.createElement(LocationRow, { key: location.name,
           data: location
@@ -43,7 +42,6 @@ var MyComponent = function (_React$Component) {
         React.createElement(
           "header",
           null,
-          "Results"
           React.createElement(
             "h1",
             null,
