@@ -13,182 +13,210 @@ var state = [];
 
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
+var headerNode = document.getElementById("header");
 
-var MyComponent = function (_React$Component) {
-  _inherits(MyComponent, _React$Component);
+var Header = function (_React$Component) {
+    _inherits(Header, _React$Component);
 
-  function MyComponent() {
-    _classCallCheck(this, MyComponent);
+    function Header() {
+        _classCallCheck(this, Header);
 
-    var _this = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
-
-    _this.state = {
-      data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
-    };
-    return _this;
-  }
-
-  _createClass(MyComponent, [{
-    key: "render",
-    value: function render() {
-      var rows = this.state.data.map(function (location) {
-        return React.createElement(LocationRow, { key: location.name,
-          data: location
-        });
-      });
-      return React.createElement(
-        "main",
-        null,
-        React.createElement(
-          "header",
-          null,
-          React.createElement(
-            "h1",
-            null,
-            React.createElement(
-              "a",
-              { href: "/index.html" },
-              "OverBored"
-            )
-          )
-        ),
-        React.createElement(
-          "div",
-          { id: "results" },
-          React.createElement(FilterList, null),
-          React.createElement(ResultsTable, null)
-        )
-      );
+        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
     }
-  }]);
 
-  return MyComponent;
+    _createClass(Header, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "header",
+                null,
+                React.createElement(
+                    "h1",
+                    null,
+                    React.createElement(
+                        "a",
+                        { href: "/index.html" },
+                        "OverBored"
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Header;
 }(React.Component);
 
-var FilterList = function (_React$Component2) {
-  _inherits(FilterList, _React$Component2);
+var MyComponent = function (_React$Component2) {
+    _inherits(MyComponent, _React$Component2);
 
-  function FilterList() {
-    _classCallCheck(this, FilterList);
+    function MyComponent() {
+        _classCallCheck(this, MyComponent);
 
-    return _possibleConstructorReturn(this, (FilterList.__proto__ || Object.getPrototypeOf(FilterList)).apply(this, arguments));
-  }
+        var _this2 = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
 
-  _createClass(FilterList, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(
-        "div",
-        null,
-        "List of filters"
-      );
+        _this2.state = {
+            data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
+        };
+        return _this2;
     }
-  }]);
 
-  return FilterList;
+    _createClass(MyComponent, [{
+        key: "render",
+        value: function render() {
+            var rows = this.state.data.map(function (location) {
+                return React.createElement(LocationRow, { key: location.name, data: location
+                });
+            });
+            return React.createElement(
+                "main",
+                null,
+                React.createElement(
+                    "div",
+                    { id: "results" },
+                    React.createElement(
+                        "div",
+                        { id: "head" },
+                        React.createElement(FilterList, null)
+                    ),
+                    React.createElement(
+                        "div",
+                        { id: "table" },
+                        React.createElement(ResultsTable, null)
+                    )
+                )
+            );
+        }
+    }]);
+
+    return MyComponent;
 }(React.Component);
 
-var ResultsTable = function (_React$Component3) {
-  _inherits(ResultsTable, _React$Component3);
+var FilterList = function (_React$Component3) {
+    _inherits(FilterList, _React$Component3);
 
-  function ResultsTable() {
-    _classCallCheck(this, ResultsTable);
+    function FilterList() {
+        _classCallCheck(this, FilterList);
 
-    var _this3 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
-
-    _this3.state = {
-      data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
-    };
-    return _this3;
-  }
-
-  _createClass(ResultsTable, [{
-    key: "render",
-    value: function render() {
-      var rows = this.state.data.map(function (location) {
-        return React.createElement(LocationRow, { key: location.name,
-          data: location
-        });
-      });
-      return React.createElement(
-        "table",
-        null,
-        React.createElement(
-          "thead",
-          null,
-          React.createElement(
-            "tr",
-            null,
-            React.createElement(
-              "th",
-              null,
-              "Location"
-            ),
-            React.createElement(
-              "th",
-              null,
-              "Price"
-            ),
-            React.createElement(
-              "th",
-              null,
-              "Distance"
-            ),
-            React.createElement(
-              "th",
-              null,
-              "Number of People"
-            ),
-            React.createElement(
-              "th",
-              null,
-              "Activity Level"
-            )
-          )
-        ),
-        React.createElement(
-          "tbody",
-          null,
-          rows
-        )
-      );
+        return _possibleConstructorReturn(this, (FilterList.__proto__ || Object.getPrototypeOf(FilterList)).apply(this, arguments));
     }
-  }]);
 
-  return ResultsTable;
+    _createClass(FilterList, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                null,
+                "List of filters"
+            );
+        }
+    }]);
+
+    return FilterList;
+}(React.Component);
+
+var ResultsTable = function (_React$Component4) {
+    _inherits(ResultsTable, _React$Component4);
+
+    function ResultsTable() {
+        _classCallCheck(this, ResultsTable);
+
+        var _this4 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
+
+        _this4.state = {
+            data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
+        };
+        return _this4;
+    }
+
+    _createClass(ResultsTable, [{
+        key: "render",
+        value: function render() {
+            var rows = this.state.data.map(function (location) {
+                return React.createElement(LocationRow, { key: location.name,
+                    data: location
+                });
+            });
+            var borderedStyle = { border: "1px Solid Silver", padding: 6 };
+            return React.createElement(
+                "table",
+                null,
+                React.createElement(
+                    "thead",
+                    null,
+                    React.createElement(
+                        "tr",
+                        { style: borderedStyle },
+                        React.createElement(
+                            "th",
+                            null,
+                            "Location"
+                        ),
+                        React.createElement(
+                            "th",
+                            null,
+                            "Price"
+                        ),
+                        React.createElement(
+                            "th",
+                            null,
+                            "Distance"
+                        ),
+                        React.createElement(
+                            "th",
+                            null,
+                            "Number of People"
+                        ),
+                        React.createElement(
+                            "th",
+                            null,
+                            "Activity Level"
+                        )
+                    )
+                ),
+                React.createElement(
+                    "tbody",
+                    null,
+                    rows
+                )
+            );
+        }
+    }]);
+
+    return ResultsTable;
 }(React.Component);
 
 var LocationRow = function LocationRow(props) {
-  return React.createElement(
-    "tr",
-    null,
-    React.createElement(
-      "td",
-      null,
-      props.data.name
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.data.price
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.data.distance
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.data.numberOfPeople
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.data.activityLvl
-    )
-  );
+    return React.createElement(
+        "tr",
+        null,
+        React.createElement(
+            "td",
+            null,
+            props.data.name
+        ),
+        React.createElement(
+            "td",
+            null,
+            props.data.price
+        ),
+        React.createElement(
+            "td",
+            null,
+            props.data.distance
+        ),
+        React.createElement(
+            "td",
+            null,
+            props.data.numberOfPeople
+        ),
+        React.createElement(
+            "td",
+            null,
+            props.data.activityLvl
+        )
+    );
 };
 
 // This renders the JSX component inside the content node:
+ReactDOM.render(React.createElement(Header, null), headerNode);
 ReactDOM.render(React.createElement(MyComponent, null), contentNode);
