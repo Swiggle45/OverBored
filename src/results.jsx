@@ -31,12 +31,8 @@ class MyComponent extends React.Component {
           <h1><a href="/index.html">OverBored</a></h1>
         </header>
         <div id="results">
-          <div id="head">
-            <FilterList /> 
-          </div>
-          <div id="table">
-            <ResultsTable />
-          </div>
+          <FilterList /> 
+          <ResultsTable />
         </div>
       </main>
     );
@@ -72,11 +68,10 @@ class ResultsTable extends React.Component {
       }
       />
     })
-    const borderedStyle = {border: "1px Solid Silver", padding: 6};
     return (
       <table>
         <thead>
-          <tr style = {borderedStyle}>
+          <tr>
             <th>Location</th>
             <th>Price</th>
             <th>Distance</th>
@@ -96,7 +91,7 @@ const LocationRow = (props) => {
   return (
     <tr>
       <td>
-        { props.data.name}
+        {props.data.name}
       </td>
       <td>
         {props.data.price}
