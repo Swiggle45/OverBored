@@ -22,23 +22,7 @@ class Header extends React.Component {
 }
 
 class MyComponent extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            data : [{name: "Blue Wall", price:"$$", distance:"On Campus", numberOfPeople:"Any", activityLvl:"low"},
-                {name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high"}]
-        }
-    }
-
     render() {
-        let rows = this.state.data.map(location => {
-            return <LocationRow key = {
-                location.name
-            } data = {
-                location
-            }
-            />
-        })
         return (
             <main>
                 <div id="results">
@@ -68,8 +52,12 @@ class ResultsTable extends React.Component {
     constructor() {
         super();
         this.state = {
-            data : [{name: "Blue Wall", price:"$$", distance:"On Campus", numberOfPeople:"Any", activityLvl:"low"},
-                {name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high"}]
+            data : [{name: "Blue Wall", price:"$$", distance:"On Campus", numberOfPeople:"Any", activityLvl:"Low"},
+                {name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "High"},
+                {name: "Cinemark Movie Theater", price: "$$", distance: "3 miles", numberOfPeople: "Any", activityLvl: "Low"},
+                {name: "Central Rock Gym", price: "$$$", distance: "5 miles", numberOfPeople:"Any", activityLvl: "High"},
+                {name: "Mt. Tom", price: "$", distance: "14 miles", numberOfPeople: "Any", activityLvl: "High"},
+                {name: "Pinz", price: "$$", distance: "3 miles", numberOfPeople: "6", activityLvl: "Medium"}]
         }
     }
 

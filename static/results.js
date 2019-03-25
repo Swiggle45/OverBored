@@ -52,21 +52,12 @@ var MyComponent = function (_React$Component2) {
     function MyComponent() {
         _classCallCheck(this, MyComponent);
 
-        var _this2 = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
-
-        _this2.state = {
-            data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
-        };
-        return _this2;
+        return _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).apply(this, arguments));
     }
 
     _createClass(MyComponent, [{
         key: "render",
         value: function render() {
-            var rows = this.state.data.map(function (location) {
-                return React.createElement(LocationRow, { key: location.name, data: location
-                });
-            });
             return React.createElement(
                 "main",
                 null,
@@ -123,7 +114,7 @@ var ResultsTable = function (_React$Component4) {
         var _this4 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
 
         _this4.state = {
-            data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
+            data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "Low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "High" }, { name: "Cinemark Movie Theater", price: "$$", distance: "3 miles", numberOfPeople: "Any", activityLvl: "Low" }, { name: "Central Rock Gym", price: "$$$", distance: "5 miles", numberOfPeople: "Any", activityLvl: "High" }, { name: "Mt. Tom", price: "$", distance: "14 miles", numberOfPeople: "Any", activityLvl: "High" }, { name: "Pinz", price: "$$", distance: "3 miles", numberOfPeople: "6", activityLvl: "Medium" }]
         };
         return _this4;
     }
