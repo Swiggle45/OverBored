@@ -31,7 +31,6 @@ var MyComponent = function (_React$Component) {
   _createClass(MyComponent, [{
     key: "render",
     value: function render() {
-
       var rows = this.state.data.map(function (location) {
         return React.createElement(LocationRow, { key: location.name,
           data: location
@@ -43,7 +42,6 @@ var MyComponent = function (_React$Component) {
         React.createElement(
           "header",
           null,
-          "Results",
           React.createElement(
             "h1",
             null,
@@ -57,16 +55,8 @@ var MyComponent = function (_React$Component) {
         React.createElement(
           "div",
           { id: "results" },
-          React.createElement(
-            "div",
-            { id: "head" },
-            React.createElement(FilterList, null)
-          ),
-          React.createElement(
-            "div",
-            { id: "table" },
-            React.createElement(ResultsTable, null)
-          )
+          React.createElement(FilterList, null),
+          React.createElement(ResultsTable, null)
         )
       );
     }
@@ -120,7 +110,6 @@ var ResultsTable = function (_React$Component3) {
           data: location
         });
       });
-      var borderedStyle = { border: "1px Solid Silver", padding: 6 };
       return React.createElement(
         "table",
         null,
@@ -129,7 +118,7 @@ var ResultsTable = function (_React$Component3) {
           null,
           React.createElement(
             "tr",
-            { style: borderedStyle },
+            null,
             React.createElement(
               "th",
               null,
