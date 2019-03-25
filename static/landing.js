@@ -33,7 +33,11 @@ var Header = function (_React$Component) {
         React.createElement(
           "h1",
           null,
-          "OverBored"
+          React.createElement(
+            "a",
+            { href: "/index.html" },
+            "OverBored"
+          )
         )
       );
     }
