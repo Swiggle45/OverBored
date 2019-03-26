@@ -125,8 +125,8 @@ var ResultsTable = function (_React$Component4) {
         value: function render() {
             var priceVar = 2000;
             var distanceVar = 1000;
-            var numberOfPeopleVar = 7;
-            var activityLvlVar = 1;
+            var numberOfPeopleVar = 0;
+            var activityLvlVar = 1000;
             this.state.filteredData = this.state.data.filter(function (location) {
                 return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
             });

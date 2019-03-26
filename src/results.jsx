@@ -65,8 +65,8 @@ class ResultsTable extends React.Component {
     render() {
         let priceVar = 2000;
         let distanceVar = 1000;
-        let numberOfPeopleVar = 7;
-        let activityLvlVar = 1;
+        let numberOfPeopleVar = 0;
+        let activityLvlVar = 1000;
         this.state.filteredData = this.state.data.filter(function(location) {
             return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
         });
