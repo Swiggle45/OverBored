@@ -12,8 +12,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var state = [];
 
 // This grabs the DOM element to be used to mount React components.
-var contentNode = document.getElementById("contents");
+var resultsNode = document.getElementById("results");
 var headerNode = document.getElementById("header");
+var sidebarNode = document.getElementById("sidebar");
 
 var Header = function (_React$Component) {
     _inherits(Header, _React$Component);
@@ -63,12 +64,7 @@ var MyComponent = function (_React$Component2) {
                 null,
                 React.createElement(
                     "div",
-                    { id: "results" },
-                    React.createElement(
-                        "div",
-                        { id: "head" },
-                        React.createElement(FilterList, null)
-                    ),
+                    { id: "contents" },
                     React.createElement(
                         "div",
                         { id: "table" },
@@ -82,42 +78,21 @@ var MyComponent = function (_React$Component2) {
     return MyComponent;
 }(React.Component);
 
-var FilterList = function (_React$Component3) {
-    _inherits(FilterList, _React$Component3);
-
-    function FilterList() {
-        _classCallCheck(this, FilterList);
-
-        return _possibleConstructorReturn(this, (FilterList.__proto__ || Object.getPrototypeOf(FilterList)).apply(this, arguments));
-    }
-
-    _createClass(FilterList, [{
-        key: "render",
-        value: function render() {
-            return React.createElement(
-                "div",
-                null,
-                "List of filters"
-            );
-        }
-    }]);
-
-    return FilterList;
-}(React.Component);
-
-var ResultsTable = function (_React$Component4) {
-    _inherits(ResultsTable, _React$Component4);
+var ResultsTable = function (_React$Component3) {
+    _inherits(ResultsTable, _React$Component3);
 
     function ResultsTable() {
         _classCallCheck(this, ResultsTable);
 
-        var _this4 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
+        var _this3 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
+
 
         _this4.state = {
             data: [{ name: "Blue Wall", price: "2", distance: "0", numberOfPeople: "100", activityLvl: "1" }, { name: "Rec Center", price: "1", distance: "0", numberOfPeople: "100", activityLvl: "3" }, { name: "Cinemark Movie Theater", price: "2", distance: "3", numberOfPeople: "100", activityLvl: "1" }, { name: "Central Rock Gym", price: "3", distance: "5", numberOfPeople: "100", activityLvl: "3" }, { name: "Mt. Tom", price: "1", distance: "14", numberOfPeople: "100", activityLvl: "3" }, { name: "Pinz", price: "2", distance: "3", numberOfPeople: "6", activityLvl: "2" }],
             filteredData: []
+          
         };
-        return _this4;
+        return _this3;
     }
 
     _createClass(ResultsTable, [{
@@ -215,6 +190,54 @@ var LocationRow = function LocationRow(props) {
     );
 };
 
+
+var Filters = function (_React$Component4) {
+    _inherits(Filters, _React$Component4);
+
+    function Filters() {
+        _classCallCheck(this, Filters);
+
+        return _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this));
+    }
+
+    _createClass(Filters, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                { id: "filters" },
+                React.createElement(
+                    "p",
+                    null,
+                    "Distance"
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    "Price Range"
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    "Number of People"
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    "Activity Level"
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    "Over 21?"
+                )
+            );
+        }
+    }]);
+
+    return Filters;
+}(React.Component);
+
 function priceEval(price) {
     if (price == 1) return "$";else if (price == 2) return "$$";else return "$$$";
 }
@@ -231,6 +254,10 @@ function activityEval(activity) {
     if (activity == 1) return "Low";else if (activity == 2) return "Medium";else return "High";
 }
 
+
 // This renders the JSX component inside the content node:
+
+
 ReactDOM.render(React.createElement(Header, null), headerNode);
-ReactDOM.render(React.createElement(MyComponent, null), contentNode);
+ReactDOM.render(React.createElement(MyComponent, null), resultsNode);
+ReactDOM.render(React.createElement(Filters, null), sidebarNode);
