@@ -86,11 +86,9 @@ var ResultsTable = function (_React$Component3) {
 
         var _this3 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
 
-
-        _this4.state = {
+        _this3.state = {
             data: [{ name: "Blue Wall", price: "2", distance: "0", numberOfPeople: "100", activityLvl: "1" }, { name: "Rec Center", price: "1", distance: "0", numberOfPeople: "100", activityLvl: "3" }, { name: "Cinemark Movie Theater", price: "2", distance: "3", numberOfPeople: "100", activityLvl: "1" }, { name: "Central Rock Gym", price: "3", distance: "5", numberOfPeople: "100", activityLvl: "3" }, { name: "Mt. Tom", price: "1", distance: "14", numberOfPeople: "100", activityLvl: "3" }, { name: "Pinz", price: "2", distance: "3", numberOfPeople: "6", activityLvl: "2" }],
             filteredData: []
-          
         };
         return _this3;
     }
@@ -190,7 +188,6 @@ var LocationRow = function LocationRow(props) {
     );
 };
 
-
 var Filters = function (_React$Component4) {
     _inherits(Filters, _React$Component4);
 
@@ -254,10 +251,7 @@ function activityEval(activity) {
     if (activity == 1) return "Low";else if (activity == 2) return "Medium";else return "High";
 }
 
-
 // This renders the JSX component inside the content node:
-
-
 ReactDOM.render(React.createElement(Header, null), headerNode);
 ReactDOM.render(React.createElement(MyComponent, null), resultsNode);
 ReactDOM.render(React.createElement(Filters, null), sidebarNode);
