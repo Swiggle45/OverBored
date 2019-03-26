@@ -6,7 +6,6 @@ const state = [
 // This grabs the DOM element to be used to mount React components.
 var resultsNode = document.getElementById("results");
 var headerNode = document.getElementById("header");
-var sidebarNode = document.getElementById("sidebar");
 
 class Header extends React.Component {
     constructor() {
@@ -27,8 +26,14 @@ class MyComponent extends React.Component {
         return (
             <main>
                 <div id="contents">
-                    <div id="table">
-                        <ResultsTable />
+                    <div id="main">
+                        <div id="table">
+                            <ResultsTable />
+                        </div>
+                    </div>
+                    <div id="line"></div>
+                    <div id="sidebar">
+                        <Filters />
                     </div>
                 </div>
             </main>
@@ -165,4 +170,3 @@ function activityEval(activity){
 // This renders the JSX component inside the content node:
 ReactDOM.render(<Header />, headerNode);
 ReactDOM.render(<MyComponent />, resultsNode);
-ReactDOM.render(<Filters />, sidebarNode);
