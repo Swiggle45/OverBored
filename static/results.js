@@ -53,21 +53,12 @@ var MyComponent = function (_React$Component2) {
     function MyComponent() {
         _classCallCheck(this, MyComponent);
 
-        var _this2 = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
-
-        _this2.state = {
-            data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
-        };
-        return _this2;
+        return _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).apply(this, arguments));
     }
 
     _createClass(MyComponent, [{
         key: "render",
         value: function render() {
-            var rows = this.state.data.map(function (location) {
-                return React.createElement(LocationRow, { key: location.name, data: location
-                });
-            });
             return React.createElement(
                 "main",
                 null,
@@ -95,8 +86,11 @@ var ResultsTable = function (_React$Component3) {
 
         var _this3 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
 
-        _this3.state = {
-            data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "high" }]
+
+        _this4.state = {
+            data: [{ name: "Blue Wall", price: "2", distance: "0", numberOfPeople: "100", activityLvl: "1" }, { name: "Rec Center", price: "1", distance: "0", numberOfPeople: "100", activityLvl: "3" }, { name: "Cinemark Movie Theater", price: "2", distance: "3", numberOfPeople: "100", activityLvl: "1" }, { name: "Central Rock Gym", price: "3", distance: "5", numberOfPeople: "100", activityLvl: "3" }, { name: "Mt. Tom", price: "1", distance: "14", numberOfPeople: "100", activityLvl: "3" }, { name: "Pinz", price: "2", distance: "3", numberOfPeople: "6", activityLvl: "2" }],
+            filteredData: []
+          
         };
         return _this3;
     }
@@ -104,9 +98,15 @@ var ResultsTable = function (_React$Component3) {
     _createClass(ResultsTable, [{
         key: "render",
         value: function render() {
-            var rows = this.state.data.map(function (location) {
-                return React.createElement(LocationRow, { key: location.name,
-                    data: location
+            var priceVar = 2000;
+            var distanceVar = 1000;
+            var numberOfPeopleVar = 0;
+            var activityLvlVar = 1000;
+            this.state.filteredData = this.state.data.filter(function (location) {
+                return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
+            });
+            var rows = this.state.filteredData.map(function (location) {
+                return React.createElement(LocationRow, { key: location.name, filteredData: location
                 });
             });
             var borderedStyle = { border: "1px Solid Silver", padding: 6 };
@@ -165,30 +165,31 @@ var LocationRow = function LocationRow(props) {
         React.createElement(
             "td",
             null,
-            props.data.name
+            props.filteredData.name
         ),
         React.createElement(
             "td",
             null,
-            props.data.price
+            priceEval(props.filteredData.price)
         ),
         React.createElement(
             "td",
             null,
-            props.data.distance
+            distEval(props.filteredData.distance)
         ),
         React.createElement(
             "td",
             null,
-            props.data.numberOfPeople
+            peopleEval(props.filteredData.numberOfPeople)
         ),
         React.createElement(
             "td",
             null,
-            props.data.activityLvl
+            activityEval(props.filteredData.activityLvl)
         )
     );
 };
+
 
 var Filters = function (_React$Component4) {
     _inherits(Filters, _React$Component4);
@@ -236,6 +237,23 @@ var Filters = function (_React$Component4) {
 
     return Filters;
 }(React.Component);
+
+function priceEval(price) {
+    if (price == 1) return "$";else if (price == 2) return "$$";else return "$$$";
+}
+
+function distEval(distance) {
+    if (distance == 0) return "On Campus";else return distance + " miles";
+}
+
+function peopleEval(people) {
+    if (people == 100) return "Any";else return people + " or fewer";
+}
+
+function activityEval(activity) {
+    if (activity == 1) return "Low";else if (activity == 2) return "Medium";else return "High";
+}
+
 
 // This renders the JSX component inside the content node:
 
