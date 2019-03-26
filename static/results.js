@@ -78,7 +78,8 @@ var MyComponent = function (_React$Component2) {
                         "div",
                         { id: "sidebar" },
                         React.createElement(Filters, null)
-                    )
+                    ),
+                    React.createElement("div", { id: "sliders" })
                 )
             );
         }
@@ -215,33 +216,125 @@ var Filters = function (_React$Component4) {
                 React.createElement(
                     "p",
                     null,
-                    "Distance"
+                    "Distance",
+                    React.createElement("br", null),
+                    React.createElement(
+                        "div",
+                        { "class": "slideContainer" },
+                        React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "0", max: "100", step: "5" })
+                    ),
+                    React.createElement("div", { id: "distanceValue" })
                 ),
                 React.createElement(
                     "p",
                     null,
-                    "Price Range"
+                    "Price Range",
+                    React.createElement("br", null),
+                    React.createElement(
+                        "div",
+                        { "class": "slideContainer" },
+                        React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "3", step: "1" })
+                    ),
+                    React.createElement("div", { id: "priceValue" })
                 ),
                 React.createElement(
                     "p",
                     null,
-                    "Number of People"
+                    "Number of People",
+                    React.createElement("br", null),
+                    React.createElement(
+                        "div",
+                        { "class": "slideContainer" },
+                        React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "5", step: "1" })
+                    ),
+                    React.createElement("div", { id: "peopleValue" })
                 ),
                 React.createElement(
                     "p",
                     null,
-                    "Activity Level"
+                    "Activity Level",
+                    React.createElement("br", null),
+                    React.createElement(
+                        "div",
+                        { "class": "slideContainer" },
+                        React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "3", step: "1" })
+                    ),
+                    React.createElement("div", { id: "activityValue" })
                 ),
                 React.createElement(
                     "p",
                     null,
-                    "Over 21?"
+                    "Over 21?",
+                    React.createElement("br", null),
+                    React.createElement(
+                        "div",
+                        { "class": "checkContainer" },
+                        React.createElement("input", { type: "checkbox", id: "ageCheck" })
+                    )
                 )
             );
         }
     }]);
 
     return Filters;
+}(React.Component);
+
+var Sliders = function (_React$Component5) {
+    _inherits(Sliders, _React$Component5);
+
+    function Sliders() {
+        _classCallCheck(this, Sliders);
+
+        return _possibleConstructorReturn(this, (Sliders.__proto__ || Object.getPrototypeOf(Sliders)).call(this));
+    }
+
+    _createClass(Sliders, [{
+        key: "render",
+        value: function render() {
+            var distanceSlider = document.getElementById("distanceSlider");
+            var distanceOut = document.getElementById("distanceValue");
+            distanceOut.innerHTML = distanceSlider.value;
+
+            distanceSlider.oninput = function () {
+                var value = this.value;
+
+                distanceOut.innerHTML = value;
+            };
+
+            var priceSlider = document.getElementById("priceSlider");
+            var priceOut = document.getElementById("priceValue");
+            priceOut.innerHTML = priceSlider.value;
+
+            priceSlider.oninput = function () {
+                var value = this.value;
+
+                priceOut.innerHTML = value;
+            };
+
+            var peopleSlider = document.getElementById("peopleSlider");
+            var peopleOut = document.getElementById("peopleValue");
+            peopleOut.innerHTML = peopleSlider.value;
+
+            peopleSlider.oninput = function () {
+                var value = this.value;
+
+                peopleOut.innerHTML = value;
+            };
+
+            var activitySlider = document.getElementById("activitySlider");
+            var activityOut = document.getElementById("activityValue");
+            activityOut.innerHTML = activitySlider.value;
+
+            activitySlider.oninput = function () {
+                var value = this.value;
+
+                activityOut.innerHTML = value;
+            };
+            return {};
+        }
+    }]);
+
+    return Sliders;
 }(React.Component);
 
 function priceEval(price) {
