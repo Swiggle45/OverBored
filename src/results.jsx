@@ -52,23 +52,30 @@ class ResultsTable extends React.Component {
     constructor() {
         super();
         this.state = {
-            data : [{name: "Blue Wall", price:"$$", distance:"On Campus", numberOfPeople:"Any", activityLvl:"Low"},
-                {name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "High"},
-                {name: "Cinemark Movie Theater", price: "$$", distance: "3 miles", numberOfPeople: "Any", activityLvl: "Low"},
-                {name: "Central Rock Gym", price: "$$$", distance: "5 miles", numberOfPeople:"Any", activityLvl: "High"},
-                {name: "Mt. Tom", price: "$", distance: "14 miles", numberOfPeople: "Any", activityLvl: "High"},
-                {name: "Pinz", price: "$$", distance: "3 miles", numberOfPeople: "6", activityLvl: "Medium"}]
+            data : [{name: "Blue Wall", price:"2", distance:"0", numberOfPeople:"100", activityLvl:"1"},
+                {name: "Rec Center", price: "1", distance: "0", numberOfPeople: "100", activityLvl: "3"},
+                {name: "Cinemark Movie Theater", price: "2", distance: "3", numberOfPeople: "100", activityLvl: "1"},
+                {name: "Central Rock Gym", price: "3", distance: "5", numberOfPeople:"100", activityLvl: "3"},
+                {name: "Mt. Tom", price: "1", distance: "14", numberOfPeople: "100", activityLvl: "3"},
+                {name: "Pinz", price: "2", distance: "3", numberOfPeople: "6", activityLvl: "2"}],
+            filteredData: []
         }
     }
 
     render() {
-        let rows = this.state.data.map(location => {
+        let priceVar = 2000;
+        let distanceVar = 1000;
+        let numberOfPeopleVar = 7;
+        let activityLvlVar = 1;
+        this.state.filteredData = this.state.data.filter(function(location) {
+            return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
+        });
+        let rows = this.state.filteredData.map(location => {
             return <LocationRow key = {
                 location.name
+            } filteredData = {
+                location
             }
-                                data = {
-                                    location
-                                }
             />
         })
         const borderedStyle = {border: "1px Solid Silver", padding: 6};
@@ -95,22 +102,55 @@ const LocationRow = (props) => {
     return (
         <tr>
             <td>
-                { props.data.name}
+                {props.filteredData.name}
             </td>
             <td>
-                {props.data.price}
+                {priceEval(props.filteredData.price)}
             </td>
             <td>
-                {props.data.distance}
+                {distEval(props.filteredData.distance)}
             </td>
             <td>
-                {props.data.numberOfPeople}
+                {peopleEval(props.filteredData.numberOfPeople)}
             </td>
             <td>
-                {props.data.activityLvl}
+                {activityEval(props.filteredData.activityLvl)}
             </td>
         </tr>
     )
+}
+
+function priceEval(price){
+    if(price == 1)
+        return "$";
+    else if(price == 2)
+        return "$$";
+    else
+        return "$$$";
+}
+
+function distEval(distance){
+    if(distance == 0)
+        return "On Campus";
+    else
+        return distance + " miles";
+}
+
+function peopleEval(people){
+    if(people == 100)
+        return "Any";
+    else
+        return people + " or fewer"
+}
+
+function activityEval(activity){
+    if(activity == 1)
+        return "Low";
+    else if(activity == 2)
+        return "Medium";
+    else
+        return "High";
+
 }
 
 

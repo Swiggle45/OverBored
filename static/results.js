@@ -114,7 +114,8 @@ var ResultsTable = function (_React$Component4) {
         var _this4 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
 
         _this4.state = {
-            data: [{ name: "Blue Wall", price: "$$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "Low" }, { name: "Rec Center", price: "$", distance: "On Campus", numberOfPeople: "Any", activityLvl: "High" }, { name: "Cinemark Movie Theater", price: "$$", distance: "3 miles", numberOfPeople: "Any", activityLvl: "Low" }, { name: "Central Rock Gym", price: "$$$", distance: "5 miles", numberOfPeople: "Any", activityLvl: "High" }, { name: "Mt. Tom", price: "$", distance: "14 miles", numberOfPeople: "Any", activityLvl: "High" }, { name: "Pinz", price: "$$", distance: "3 miles", numberOfPeople: "6", activityLvl: "Medium" }]
+            data: [{ name: "Blue Wall", price: "2", distance: "0", numberOfPeople: "100", activityLvl: "1" }, { name: "Rec Center", price: "1", distance: "0", numberOfPeople: "100", activityLvl: "3" }, { name: "Cinemark Movie Theater", price: "2", distance: "3", numberOfPeople: "100", activityLvl: "1" }, { name: "Central Rock Gym", price: "3", distance: "5", numberOfPeople: "100", activityLvl: "3" }, { name: "Mt. Tom", price: "1", distance: "14", numberOfPeople: "100", activityLvl: "3" }, { name: "Pinz", price: "2", distance: "3", numberOfPeople: "6", activityLvl: "2" }],
+            filteredData: []
         };
         return _this4;
     }
@@ -122,9 +123,15 @@ var ResultsTable = function (_React$Component4) {
     _createClass(ResultsTable, [{
         key: "render",
         value: function render() {
-            var rows = this.state.data.map(function (location) {
-                return React.createElement(LocationRow, { key: location.name,
-                    data: location
+            var priceVar = 2000;
+            var distanceVar = 1000;
+            var numberOfPeopleVar = 7;
+            var activityLvlVar = 1;
+            this.state.filteredData = this.state.data.filter(function (location) {
+                return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
+            });
+            var rows = this.state.filteredData.map(function (location) {
+                return React.createElement(LocationRow, { key: location.name, filteredData: location
                 });
             });
             var borderedStyle = { border: "1px Solid Silver", padding: 6 };
@@ -183,30 +190,46 @@ var LocationRow = function LocationRow(props) {
         React.createElement(
             "td",
             null,
-            props.data.name
+            props.filteredData.name
         ),
         React.createElement(
             "td",
             null,
-            props.data.price
+            priceEval(props.filteredData.price)
         ),
         React.createElement(
             "td",
             null,
-            props.data.distance
+            distEval(props.filteredData.distance)
         ),
         React.createElement(
             "td",
             null,
-            props.data.numberOfPeople
+            peopleEval(props.filteredData.numberOfPeople)
         ),
         React.createElement(
             "td",
             null,
-            props.data.activityLvl
+            activityEval(props.filteredData.activityLvl)
         )
     );
 };
+
+function priceEval(price) {
+    if (price == 1) return "$";else if (price == 2) return "$$";else return "$$$";
+}
+
+function distEval(distance) {
+    if (distance == 0) return "On Campus";else return distance + " miles";
+}
+
+function peopleEval(people) {
+    if (people == 100) return "Any";else return people + " or fewer";
+}
+
+function activityEval(activity) {
+    if (activity == 1) return "Low";else if (activity == 2) return "Medium";else return "High";
+}
 
 // This renders the JSX component inside the content node:
 ReactDOM.render(React.createElement(Header, null), headerNode);
