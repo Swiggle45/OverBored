@@ -28,11 +28,43 @@ class Filters extends React.Component {
   render() {
     return (
       <main>
-        <p>Distance</p>
-        <p>Price Range</p>
-        <p>Number of People</p>
-        <p>Activity Level</p>
-        <p>Over 21?</p>
+        <p>Distance<br />
+          <div class = "slideContainer">
+            <input type="range" className="slider" id="distanceSlider" min="1" max="100" step="5"></input>
+          </div>
+          <div id="distanceValue"></div>
+        </p>
+        <p>Price Range<br />
+          <div class = "slideContainer">
+            <input type="range" className="slider" id="priceSlider" min="1" max="100" step="5"></input>
+          </div>
+          <div id="priceValue"></div>
+        </p>
+        <p>Number of People<br />
+          <div class = "slideContainer">
+            <input type="range" className="slider" id="peopleSlider" min="1" max="100" step="5"></input>
+          </div>
+          <div id="peopleValue"></div>
+        </p>
+        <p>Activity Level<br />
+          <div class = "slideContainer">
+            <input type="range" className="slider" id="activitySlider" min="1" max="100" step="5"></input>
+          </div>
+          <div id="activityValue"></div>
+        </p>
+        <p>Over 21?<br />
+          <div class = "checkContainer">
+            <input type="checkbox" id="ageCheck"></input>
+          </div>
+        </p>
+        {/* let distanceSlider = document.getElementById("distanceSlider");
+        let distanceOut = document.getElementById("distanceValue");
+        distanceOut.innerHTML = distanceSlider.value;
+
+        distanceSlider.oninput = function() {
+          distanceOut.innerHTML = this.value();
+        } */}
+    
       </main>
     );
   }

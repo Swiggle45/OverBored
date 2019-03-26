@@ -63,27 +63,61 @@ var Filters = function (_React$Component2) {
         React.createElement(
           "p",
           null,
-          "Distance"
+          "Distance",
+          React.createElement("br", null),
+          React.createElement(
+            "div",
+            { "class": "slideContainer" },
+            React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "1", max: "100", step: "5" })
+          ),
+          React.createElement("div", { id: "distanceValue" })
         ),
         React.createElement(
           "p",
           null,
-          "Price Range"
+          "Price Range",
+          React.createElement("br", null),
+          React.createElement(
+            "div",
+            { "class": "slideContainer" },
+            React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "100", step: "5" })
+          ),
+          React.createElement("div", { id: "priceValue" })
         ),
         React.createElement(
           "p",
           null,
-          "Number of People"
+          "Number of People",
+          React.createElement("br", null),
+          React.createElement(
+            "div",
+            { "class": "slideContainer" },
+            React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "100", step: "5" })
+          ),
+          React.createElement("div", { id: "peopleValue" })
         ),
         React.createElement(
           "p",
           null,
-          "Activity Level"
+          "Activity Level",
+          React.createElement("br", null),
+          React.createElement(
+            "div",
+            { "class": "slideContainer" },
+            React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "100", step: "5" })
+          ),
+          React.createElement("div", { id: "activityValue" })
         ),
         React.createElement(
           "p",
           null,
-          "Over 21?"
+          "Over 21?",
+          React.createElement("br", null),
+          React.createElement(
+            "div",
+            { "class": "checkContainer" },
+            React.createElement("input", { type: "checkbox", id: "ageCheck" })
+          )
         )
       );
     }
