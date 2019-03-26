@@ -53,7 +53,15 @@ var MyComponent = function (_React$Component2) {
     function MyComponent() {
         _classCallCheck(this, MyComponent);
 
-        return _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).apply(this, arguments));
+        var _this2 = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
+
+        _this2.state = {
+            priceDef: 2000,
+            distanceDef: 1000,
+            numberOfPeopleDef: 0,
+            activityLvlDef: 1000
+        };
+        return _this2;
     }
 
     _createClass(MyComponent, [{
@@ -67,8 +75,21 @@ var MyComponent = function (_React$Component2) {
                     { id: "contents" },
                     React.createElement(
                         "div",
-                        { id: "table" },
-                        React.createElement(ResultsTable, null)
+                        { id: "main" },
+                        React.createElement(
+                            "div",
+                            { id: "table" },
+                            React.createElement(ResultsTable, { price: this.state.priceDef,
+                                dist: this.state.distanceDef,
+                                people: this.state.numberOfPeopleDef,
+                                activity: this.state.activityLvlDef })
+                        )
+                    ),
+                    React.createElement("div", { id: "line" }),
+                    React.createElement(
+                        "div",
+                        { id: "sidebar" },
+                        React.createElement(Filters, null)
                     )
                 )
             );
@@ -81,11 +102,12 @@ var MyComponent = function (_React$Component2) {
 var ResultsTable = function (_React$Component3) {
     _inherits(ResultsTable, _React$Component3);
 
-    function ResultsTable() {
+    function ResultsTable(props) {
         _classCallCheck(this, ResultsTable);
 
-        var _this3 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this));
+        var _this3 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this, props));
 
+        console.log(props);
         _this3.state = {
             data: [{ name: "Blue Wall", price: "2", distance: "0", numberOfPeople: "100", activityLvl: "1" }, { name: "Rec Center", price: "1", distance: "0", numberOfPeople: "100", activityLvl: "3" }, { name: "Cinemark Movie Theater", price: "2", distance: "3", numberOfPeople: "100", activityLvl: "1" }, { name: "Central Rock Gym", price: "3", distance: "5", numberOfPeople: "100", activityLvl: "3" }, { name: "Mt. Tom", price: "1", distance: "14", numberOfPeople: "100", activityLvl: "3" }, { name: "Pinz", price: "2", distance: "3", numberOfPeople: "6", activityLvl: "2" }],
             filteredData: []
@@ -96,15 +118,15 @@ var ResultsTable = function (_React$Component3) {
     _createClass(ResultsTable, [{
         key: "render",
         value: function render() {
-            var priceVar = 2000;
-            var distanceVar = 1000;
-            var numberOfPeopleVar = 0;
-            var activityLvlVar = 1000;
+            var priceVar = this.props.price;
+            var distanceVar = this.props.dist;
+            var numberOfPeopleVar = this.props.people;
+            var activityLvlVar = this.props.activity;
             this.state.filteredData = this.state.data.filter(function (location) {
                 return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
             });
             var rows = this.state.filteredData.map(function (location) {
-                return React.createElement(LocationRow, { key: location.name, filteredData: location
+                return React.createElement(LocationRow, { key: location.name, data: location
                 });
             });
             var borderedStyle = { border: "1px Solid Silver", padding: 6 };
@@ -163,27 +185,27 @@ var LocationRow = function LocationRow(props) {
         React.createElement(
             "td",
             null,
-            props.filteredData.name
+            props.data.name
         ),
         React.createElement(
             "td",
             null,
-            priceEval(props.filteredData.price)
+            priceEval(props.data.price)
         ),
         React.createElement(
             "td",
             null,
-            distEval(props.filteredData.distance)
+            distEval(props.data.distance)
         ),
         React.createElement(
             "td",
             null,
-            peopleEval(props.filteredData.numberOfPeople)
+            peopleEval(props.data.numberOfPeople)
         ),
         React.createElement(
             "td",
             null,
-            activityEval(props.filteredData.activityLvl)
+            activityEval(props.data.activityLvl)
         )
     );
 };

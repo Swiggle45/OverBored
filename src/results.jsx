@@ -23,12 +23,31 @@ class Header extends React.Component {
 }
 
 class MyComponent extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            priceDef : 2000,
+            distanceDef : 1000,
+            numberOfPeopleDef : 0,
+            activityLvlDef : 1000
+        }
+    }
     render() {
         return (
             <main>
                 <div id="contents">
-                    <div id="table">
-                        <ResultsTable />
+
+                    <div id="main">
+                        <div id="table">
+                            <ResultsTable price={this.state.priceDef}
+                                          dist={this.state.distanceDef}
+                                          people={this.state.numberOfPeopleDef}
+                                          activity={this.state.activityLvlDef}/>
+                        </div>
+                    </div>
+                    <div id="line"></div>
+                    <div id="sidebar">
+                        <Filters />
                     </div>
                 </div>
             </main>
@@ -37,8 +56,9 @@ class MyComponent extends React.Component {
 }
 
 class ResultsTable extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(props)
         this.state = {
             data : [{name: "Blue Wall", price:"2", distance:"0", numberOfPeople:"100", activityLvl:"1"},
                 {name: "Rec Center", price: "1", distance: "0", numberOfPeople: "100", activityLvl: "3"},
@@ -51,17 +71,17 @@ class ResultsTable extends React.Component {
     }
 
     render() {
-        let priceVar = 2000;
-        let distanceVar = 1000;
-        let numberOfPeopleVar = 0;
-        let activityLvlVar = 1000;
+        let priceVar = this.props.price;
+        let distanceVar = this.props.dist;
+        let numberOfPeopleVar = this.props.people;
+        let activityLvlVar = this.props.activity;
         this.state.filteredData = this.state.data.filter(function(location) {
             return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
         });
         let rows = this.state.filteredData.map(location => {
             return <LocationRow key = {
                 location.name
-            } filteredData = {
+            } data = {
                 location
             }
             />
@@ -90,19 +110,19 @@ const LocationRow = (props) => {
     return (
         <tr>
             <td>
-                {props.filteredData.name}
+                {props.data.name}
             </td>
             <td>
-                {priceEval(props.filteredData.price)}
+                {priceEval(props.data.price)}
             </td>
             <td>
-                {distEval(props.filteredData.distance)}
+                {distEval(props.data.distance)}
             </td>
             <td>
-                {peopleEval(props.filteredData.numberOfPeople)}
+                {peopleEval(props.data.numberOfPeople)}
             </td>
             <td>
-                {activityEval(props.filteredData.activityLvl)}
+                {activityEval(props.data.activityLvl)}
             </td>
         </tr>
     )
