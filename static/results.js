@@ -14,7 +14,6 @@ var state = [];
 // This grabs the DOM element to be used to mount React components.
 var resultsNode = document.getElementById("results");
 var headerNode = document.getElementById("header");
-var sidebarNode = document.getElementById("sidebar");
 
 var Header = function (_React$Component) {
     _inherits(Header, _React$Component);
@@ -67,8 +66,18 @@ var MyComponent = function (_React$Component2) {
                     { id: "contents" },
                     React.createElement(
                         "div",
-                        { id: "table" },
-                        React.createElement(ResultsTable, null)
+                        { id: "main" },
+                        React.createElement(
+                            "div",
+                            { id: "table" },
+                            React.createElement(ResultsTable, null)
+                        )
+                    ),
+                    React.createElement("div", { id: "line" }),
+                    React.createElement(
+                        "div",
+                        { id: "sidebar" },
+                        React.createElement(Filters, null)
                     )
                 )
             );
@@ -254,4 +263,3 @@ function activityEval(activity) {
 // This renders the JSX component inside the content node:
 ReactDOM.render(React.createElement(Header, null), headerNode);
 ReactDOM.render(React.createElement(MyComponent, null), resultsNode);
-ReactDOM.render(React.createElement(Filters, null), sidebarNode);
