@@ -4,8 +4,9 @@ const state = [
 ];
 
 // This grabs the DOM element to be used to mount React components.
-var contentNode = document.getElementById("contents");
+var resultsNode = document.getElementById("results");
 var headerNode = document.getElementById("header");
+var sidebarNode = document.getElementById("sidebar");
 
 class Header extends React.Component {
     constructor() {
@@ -41,26 +42,13 @@ class MyComponent extends React.Component {
         })
         return (
             <main>
-                <div id="results">
-                    <div id="head">
-                        <FilterList />
-                    </div>
+                <div id="contents">
                     <div id="table">
                         <ResultsTable />
                     </div>
                 </div>
             </main>
         );
-    }
-}
-
-class FilterList extends React.Component {
-    render(){
-        return (
-            <div>
-                List of filters
-            </div>
-        )
     }
 }
 
@@ -125,8 +113,25 @@ const LocationRow = (props) => {
     )
 }
 
-
+class Filters extends React.Component {
+    constructor() {
+      super();
+    }
+  
+    render() {
+      return (
+        <div id="filters">
+          <p>Distance</p>
+          <p>Price Range</p>
+          <p>Number of People</p>
+          <p>Activity Level</p>
+          <p>Over 21?</p>
+        </div>
+      );
+    }
+  }
 
 // This renders the JSX component inside the content node:
 ReactDOM.render(<Header />, headerNode);
-ReactDOM.render(<MyComponent />, contentNode);
+ReactDOM.render(<MyComponent />, resultsNode);
+ReactDOM.render(<Filters />, sidebarNode);
