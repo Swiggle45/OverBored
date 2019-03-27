@@ -1,14 +1,15 @@
-# Application Name
-
-Rename the above with the name of your application.
+# OverBoard
 
 # Overview
 
-Add an overview of your application here.
+This is an application made to help the user find an activity when they're bored and don't know what to do. It filters a list of nearby activities based on distance, price, activity level, number of people, and whether the user is over 21 or not.
 
 # Team Members
 
-Add the team member names who are working on this application.
+Temma Eventov
+Tanner Marsh
+Varun Sathiyaseelan
+James Swingle
 
 # Application Initialization
 
