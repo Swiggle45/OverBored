@@ -26,22 +26,20 @@ h1 a:visited {
     padding: 10px;
     text-decoration: none;
 }
-#results {
+#main {
     width: 74%;
     font-size: 24px;
     color: #ffffff;
     float: left;
 }
-#results head {
-    font-size: 24px;
-    color: #ffffff;
-}
-#results table {
+#main table {
     width: 100%;
-    font-size: 26px;
-    color: #ffffff;
     text-align: left;
     padding: 20px;
+}
+#table head {
+    font-size: 24px;
+    color: #ffffff;
 }
 #results tr {
     height: 50px;
@@ -54,10 +52,10 @@ h1 a:visited {
     border-left: 5px solid #3b3d42;
 }
 #sidebar {
-    width: 25%;
+    width: 24%;
     float: right;
 }
-#sidebar #filters p {
+#sidebar p {
     color: #ffffff;
     font-size: 26px;
     margin: 10%;
@@ -77,4 +75,38 @@ main a {
     margin: 20px;
     text-decoration: none;
     color: #ffffff;
+}
+.slideContainer {
+    width: 100%;
+}
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80%;
+    height: 15px;
+    border-radius: 15px;
+    background: #3b3d42;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+.slider:hover {
+    opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #0071ff;
+    cursor: pointer;
+}
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
 }

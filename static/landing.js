@@ -68,13 +68,8 @@ var MyComponent = function (_React$Component2) {
         ),
         React.createElement(
           "a",
-          { href: "/filters.html" },
-          "Start your Search"
-        ),
-        React.createElement(
-          "a",
           { href: "/results.html" },
-          "View Results"
+          "Start your Search"
         )
       );
     }
