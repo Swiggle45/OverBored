@@ -55,10 +55,10 @@ var MyComponent = function (_React$Component2) {
         var _this2 = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
 
         _this2.state = {
-            priceDef: 2000,
-            distanceDef: 1000,
-            numberOfPeopleDef: 0,
-            activityLvlDef: 1000
+            price: 2000,
+            distance: 1000,
+            numberOfPeople: 0,
+            activityLvl: 1000
         };
         return _this2;
     }
@@ -66,6 +66,8 @@ var MyComponent = function (_React$Component2) {
     _createClass(MyComponent, [{
         key: "render",
         value: function render() {
+            var _this3 = this;
+
             return React.createElement(
                 "main",
                 null,
@@ -78,17 +80,28 @@ var MyComponent = function (_React$Component2) {
                         React.createElement(
                             "div",
                             { id: "table" },
-                            React.createElement(ResultsTable, { price: this.state.priceDef,
-                                dist: this.state.distanceDef,
-                                people: this.state.numberOfPeopleDef,
-                                activity: this.state.activityLvlDef })
+                            React.createElement(ResultsTable, { price: this.state.price,
+                                dist: this.state.distance,
+                                people: this.state.numberOfPeople,
+                                activity: this.state.activityLvl })
                         )
                     ),
                     React.createElement("div", { id: "line" }),
                     React.createElement(
                         "div",
                         { id: "sidebar" },
-                        React.createElement(Filters, null)
+                        React.createElement(Filters, { price: this.state.price, changePrice: function changePrice(price) {
+                                return _this3.setState({ price: price });
+                            },
+                            dist: this.state.distance, changeDist: function changeDist(dist) {
+                                return _this3.setState({ distance: dist });
+                            },
+                            people: this.state.numberOfPeople, changePeople: function changePeople(people) {
+                                return _this3.setState({ numberOfPeople: people });
+                            },
+                            activity: this.state.activityLvl, changeActivity: function changeActivity(activity) {
+                                return _this3.setState({ activityLvl: activity });
+                            } })
                     ),
                     React.createElement("div", { id: "sliders" })
                 )
@@ -105,14 +118,14 @@ var ResultsTable = function (_React$Component3) {
     function ResultsTable(props) {
         _classCallCheck(this, ResultsTable);
 
-        var _this3 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this, props));
+        var _this4 = _possibleConstructorReturn(this, (ResultsTable.__proto__ || Object.getPrototypeOf(ResultsTable)).call(this, props));
 
         console.log(props);
-        _this3.state = {
+        _this4.state = {
             data: [{ name: "Blue Wall", price: "2", distance: "0", numberOfPeople: "100", activityLvl: "1" }, { name: "Rec Center", price: "1", distance: "0", numberOfPeople: "100", activityLvl: "3" }, { name: "Cinemark Movie Theater", price: "2", distance: "3", numberOfPeople: "100", activityLvl: "1" }, { name: "Central Rock Gym", price: "3", distance: "5", numberOfPeople: "100", activityLvl: "3" }, { name: "Mt. Tom", price: "1", distance: "14", numberOfPeople: "100", activityLvl: "3" }, { name: "Pinz", price: "2", distance: "3", numberOfPeople: "6", activityLvl: "2" }],
             filteredData: []
         };
-        return _this3;
+        return _this4;
     }
 
     _createClass(ResultsTable, [{
@@ -213,15 +226,20 @@ var LocationRow = function LocationRow(props) {
 var Filters = function (_React$Component4) {
     _inherits(Filters, _React$Component4);
 
-    function Filters() {
+    function Filters(props) {
         _classCallCheck(this, Filters);
 
-        return _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this));
+        var _this5 = _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this, props));
+
+        console.log(props);
+        return _this5;
     }
 
     _createClass(Filters, [{
         key: "render",
         value: function render() {
+            var _this6 = this;
+
             return React.createElement(
                 "div",
                 { id: "filters" },
@@ -232,8 +250,10 @@ var Filters = function (_React$Component4) {
                     React.createElement("br", null),
                     React.createElement(
                         "div",
-                        { "class": "slideContainer" },
-                        React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "0", max: "100", step: "5" })
+                        { className: "slideContainer" },
+                        React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "0", max: "100", step: "5", onInput: function onInput() {
+                                return _this6.props.changeDist(document.getElementById("distanceSlider").value);
+                            } })
                     ),
                     React.createElement("div", { id: "distanceValue" })
                 ),
@@ -244,8 +264,10 @@ var Filters = function (_React$Component4) {
                     React.createElement("br", null),
                     React.createElement(
                         "div",
-                        { "class": "slideContainer" },
-                        React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "3", step: "1" })
+                        { className: "slideContainer" },
+                        React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "3", step: "1", onInput: function onInput() {
+                                return _this6.props.changePrice(document.getElementById("priceSlider").value);
+                            } })
                     ),
                     React.createElement("div", { id: "priceValue" })
                 ),
@@ -256,8 +278,10 @@ var Filters = function (_React$Component4) {
                     React.createElement("br", null),
                     React.createElement(
                         "div",
-                        { "class": "slideContainer" },
-                        React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "5", step: "1" })
+                        { className: "slideContainer" },
+                        React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "5", step: "1", onInput: function onInput() {
+                                return _this6.props.changePeople(document.getElementById("peopleSlider").value);
+                            } })
                     ),
                     React.createElement("div", { id: "peopleValue" })
                 ),
@@ -268,8 +292,10 @@ var Filters = function (_React$Component4) {
                     React.createElement("br", null),
                     React.createElement(
                         "div",
-                        { "class": "slideContainer" },
-                        React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "3", step: "1" })
+                        { className: "slideContainer" },
+                        React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "3", step: "1", onInput: function onInput() {
+                                return _this6.props.changeActivity(document.getElementById("activitySlider").value);
+                            } })
                     ),
                     React.createElement("div", { id: "activityValue" })
                 ),
@@ -280,7 +306,7 @@ var Filters = function (_React$Component4) {
                     React.createElement("br", null),
                     React.createElement(
                         "div",
-                        { "class": "checkContainer" },
+                        { className: "checkContainer" },
                         React.createElement("input", { type: "checkbox", id: "ageCheck" })
                     )
                 )

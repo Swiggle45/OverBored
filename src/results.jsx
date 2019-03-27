@@ -25,29 +25,30 @@ class MyComponent extends React.Component {
     constructor(){
         super();
         this.state = {
-            priceDef : 2000,
-            distanceDef : 1000,
-            numberOfPeopleDef : 0,
-            activityLvlDef : 1000
+            price : 2000,
+            distance : 1000,
+            numberOfPeople : 0,
+            activityLvl : 1000
         }
     }
     render() {
         return (
             <main>
                 <div id="contents">
-
-
                     <div id="main">
                         <div id="table">
-                            <ResultsTable price={this.state.priceDef}
-                                          dist={this.state.distanceDef}
-                                          people={this.state.numberOfPeopleDef}
-                                          activity={this.state.activityLvlDef}/>
+                            <ResultsTable price={this.state.price}
+                                          dist={this.state.distance}
+                                          people={this.state.numberOfPeople}
+                                          activity={this.state.activityLvl}/>
                         </div>
                     </div>
                     <div id="line"></div>
                     <div id="sidebar">
-                        <Filters />
+                        <Filters price={this.state.price} changePrice={(price) => this.setState({price: price})}
+                                 dist={this.state.distance} changeDist={(dist) => this.setState({distance: dist})}
+                                 people={this.state.numberOfPeople} changePeople={(people) => this.setState({numberOfPeople: people})}
+                                 activity={this.state.activityLvl} changeActivity={(activity)=> this.setState({activityLvl: activity})}/>
 
                     </div>
                     <div id="sliders">
@@ -134,43 +135,43 @@ const LocationRow = (props) => {
 
 
 class Filters extends React.Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
+      console.log(props);
     }
-  
     render() {
       return (
         <div id="filters">
           <p>Distance<br />
-          <div class = "slideContainer">
-            <input type="range" className="slider" id="distanceSlider" min="0" max="100" step="5"></input>
+          <div className = "slideContainer">
+            <input type="range" className="slider" id="distanceSlider" min="0" max="100" step="5" onInput={() => this.props.changeDist(document.getElementById("distanceSlider").value)}/>
           </div>
           <div id="distanceValue"></div>
         </p>
 
         <p>Price Range<br />
-          <div class = "slideContainer">
-            <input type="range" className="slider" id="priceSlider" min="1" max="3" step="1"></input>
+          <div className = "slideContainer">
+              <input type="range" className="slider" id="priceSlider" min="1" max="3" step="1"  onInput={() => this.props.changePrice(document.getElementById("priceSlider").value)}></input>
           </div>
           <div id="priceValue"></div>
         </p>
 
         <p>Number of People<br />
-          <div class = "slideContainer">
-            <input type="range" className="slider" id="peopleSlider" min="1" max="5" step="1"></input>
+          <div className = "slideContainer">
+            <input type="range" className="slider" id="peopleSlider" min="1" max="5" step="1" onInput={() => this.props.changePeople(document.getElementById("peopleSlider").value)}/>
           </div>
           <div id="peopleValue"></div>
         </p>
 
         <p>Activity Level<br />
-          <div class = "slideContainer">
-            <input type="range" className="slider" id="activitySlider" min="1" max="3" step="1"></input>
+          <div className = "slideContainer">
+            <input type="range" className="slider" id="activitySlider" min="1" max="3" step="1" onInput={() => this.props.changeActivity(document.getElementById("activitySlider").value)}/>
           </div>
           <div id="activityValue"></div>
         </p>
 
         <p>Over 21?<br />
-          <div class = "checkContainer">
+          <div className = "checkContainer">
             <input type="checkbox" id="ageCheck"></input>
           </div>
         </p>
