@@ -10,13 +10,17 @@ app.use(express.static('static'));
 
 app.use(bodyParser.json());
 
-const validPlaceStatus = {
-    name: true,
-    price: true,
-    distance: true,
-    numberOfPeople: true,
-    activityLvl: true,
+const validPriceStatus = {
+    1: true,
+    2: true,
+    3: true
 };
+
+const validActivityStatus = {
+  1: true,
+  2: true,
+  3: true
+}
   
 const placeFieldType = {
     name: 'required',
@@ -40,8 +44,15 @@ function validatePlace(place) {
     return null;
 }
 
-app.get('api/results.html', (req, res) => {
-    db.collection('places').find().toArray().then(places => {
+app.get('/api/results', (req, res) => {
+  const filter = {};
+  if (req.query.name) filter.name = req.query.name;
+  if (req.query.price) filter.price = req.query.price;
+  if (req.query.distance) filter.distance = req.query.distance;
+  if (req.query.numberOfPeople) filter.numberOfPeople = req.query.numberOfPeople;
+  if (req.query.activityLvl) filter.activityLvl = req.query.activityLvl;
+
+    db.collection('places').find(filter).toArray().then(places => {
       const metadata = { total_count: places.length };
       res.json({ _metadata: metadata, records: places })
     }).catch(error => {
@@ -50,7 +61,7 @@ app.get('api/results.html', (req, res) => {
     });
 });
   
-app.post('api/results.html', (req, res) => {
+app.post('/api/results', (req, res) => {
     const newPlace = req.body;
     newPlace.created = new Date();
   
