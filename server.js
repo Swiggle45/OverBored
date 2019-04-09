@@ -39,13 +39,11 @@ function validatePlace(place) {
         return `${field} is required.`;
       }
     }
-
-
-
+  
     if (!validPriceStatus[place.price])
-      return `${place.price} is not a valid price (please input 1, 2, or 3).`;
+      return `${[place].price} is not a valid price.`;
     if (!validActivityStatus[place.activityLvl])
-      return `${place.activityLvl} is not a valid activity level.`;
+      return `${[place].activityLvl} is not a valid activity level.`;
     return null;
 }
 
