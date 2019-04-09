@@ -1,3 +1,4 @@
+
 // This is a place holder for the initial application state.
 const state = [
 
@@ -15,29 +16,39 @@ class Header extends React.Component {
   render() {
     return (
         <header>
-          <h1><a href="/index.html">OverBored</a></h1>
+          <h1>
+            <a href="/index.html">OverBored</a>
+          </h1>
         </header>
+        
     );
   }
 }
 
-class MyComponent extends React.Component {
+class Landing extends React.Component {
   constructor() {
     super();
   }
 
   render() {
     return (
-      <main>
+      <div>
+        <header>
+          <h1>
+          <a href="/index.html">OverBored</a>
+          </h1>
+        </header>
+        <main>
           <p>
             Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you're willing to travel. Have fun!
           </p>
           <a href="/results.html">Start your Search</a>
       </main>
+      </div>
+      
     );
   }
 }
 
-ReactDOM.render(<Header />, headerNode);
-// This renders the JSX component inside the content node:
-ReactDOM.render(<MyComponent />, contentNode);
+//ReactDOM.render(<Header />, headerNode);
+ReactDOM.render(<Landing />, contentNode);

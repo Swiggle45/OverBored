@@ -46,38 +46,56 @@ var Header = function (_React$Component) {
   return Header;
 }(React.Component);
 
-var MyComponent = function (_React$Component2) {
-  _inherits(MyComponent, _React$Component2);
+var Landing = function (_React$Component2) {
+  _inherits(Landing, _React$Component2);
 
-  function MyComponent() {
-    _classCallCheck(this, MyComponent);
+  function Landing() {
+    _classCallCheck(this, Landing);
 
-    return _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
+    return _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this));
   }
 
-  _createClass(MyComponent, [{
+  _createClass(Landing, [{
     key: "render",
     value: function render() {
       return React.createElement(
-        "main",
+        "div",
         null,
         React.createElement(
-          "p",
+          "header",
           null,
-          "Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you're willing to travel. Have fun!"
+          React.createElement(
+            "h1",
+            null,
+            React.createElement(
+              "a",
+              { href: "/index.html" },
+              "OverBored"
+            )
+          )
         ),
         React.createElement(
-          "a",
-          { href: "/results.html" },
-          "Start your Search"
+          "main",
+          null,
+          React.createElement(
+            "p",
+            null,
+            "Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you're willing to travel. Have fun!"
+          ),
+          React.createElement(
+            "a",
+            { href: "/results.html" },
+            "Start your Search"
+          )
         )
       );
     }
   }]);
 
-  return MyComponent;
+  return Landing;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Header, null), headerNode);
-// This renders the JSX component inside the content node:
-ReactDOM.render(React.createElement(MyComponent, null), contentNode);
+//ReactDOM.render(<Header />, headerNode);
+
+
+ReactDOM.render(React.createElement(Landing, null), contentNode);

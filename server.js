@@ -11,15 +11,15 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 
 const validPriceStatus = {
-    1: true,
-    2: true,
-    3: true
+    '1': true,
+    '2': true,
+    '3': true
 };
 
 const validActivityStatus = {
-  1: true,
-  2: true,
-  3: true
+  '1': true,
+  '2': true,
+  '3': true
 }
   
 const placeFieldType = {
@@ -32,15 +32,17 @@ const placeFieldType = {
   
 function validatePlace(place) {
     for (const field in placeFieldType) {
-      const type = [placeFieldType][field];
+      const type = placeFieldType[field];
       if (!type) {
         delete place[field];
       } else if (type === 'required' && !place[field]) {
         return `${field} is required.`;
       }
     }
-    if (!validPlaceStatus[place.status])
-      return `${[place].status} is not a valid status.`;
+    if (!validPriceStatus[place.price])
+      return `${[place].price} is not a valid price.`;
+      if (!validActivityStatus[place.activityLvl])
+      return `${[place].activityLvl} is not a valid activity level.`;
     return null;
 }
 
@@ -63,7 +65,6 @@ app.get('/api/results', (req, res) => {
   
 app.post('/api/results', (req, res) => {
     const newPlace = req.body;
-    newPlace.created = new Date();
   
     const err = validatePlace(newPlace);
     if (err) {
