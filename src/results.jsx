@@ -106,7 +106,10 @@ class ResultsTable extends React.Component {
     })
       .then(res => {
         if (res.ok) {
-          
+          res.json().then(updatedPlace => {
+            const newPlaces = this.state.places.concat(updatedPlace);
+            this.setState({ places: newPlaces, filteredData: this.state.filteredData });
+          });
         }
         else {
           res.json()
@@ -140,6 +143,9 @@ class ResultsTable extends React.Component {
     const borderedStyle = { border: "1px Solid Silver", padding: 6 };
     return (
       <div>
+        <div id="newPlace">
+              <AddPlace createPlace={this.createPlace} />
+            </div>
         <table>
         <thead>
           <tr style={borderedStyle}>
@@ -154,9 +160,6 @@ class ResultsTable extends React.Component {
           {rows}
         </tbody>
       </table>
-      <div id="newPlace">
-              <AddPlace createPlace={this.createPlace} />
-            </div>
       </div>
       
     )
