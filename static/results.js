@@ -163,12 +163,19 @@ var ResultsTable = function (_React$Component3) {
   }, {
     key: "createPlace",
     value: function createPlace(newPlace) {
+      var _this6 = this;
+
       fetch('/api/results', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newPlace)
       }).then(function (res) {
-        if (res.ok) {} else {
+        if (res.ok) {
+          res.json().then(function (updatedPlace) {
+            var newPlaces = _this6.state.places.concat(updatedPlace);
+            _this6.setState({ places: newPlaces, filteredData: _this6.state.filteredData });
+          });
+        } else {
           res.json().then(function (error) {
             alert('Failed to add issue: ' + error.message);
           });
@@ -198,6 +205,11 @@ var ResultsTable = function (_React$Component3) {
       return React.createElement(
         "div",
         null,
+        React.createElement(
+          "div",
+          { id: "newPlace" },
+          React.createElement(AddPlace, { createPlace: this.createPlace })
+        ),
         React.createElement(
           "table",
           null,
@@ -239,11 +251,6 @@ var ResultsTable = function (_React$Component3) {
             null,
             rows
           )
-        ),
-        React.createElement(
-          "div",
-          { id: "newPlace" },
-          React.createElement(AddPlace, { createPlace: this.createPlace })
         )
       );
     }
@@ -290,16 +297,16 @@ var Filters = function (_React$Component4) {
   function Filters(props) {
     _classCallCheck(this, Filters);
 
-    var _this6 = _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this, props));
+    var _this7 = _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this, props));
 
     console.log(props);
-    return _this6;
+    return _this7;
   }
 
   _createClass(Filters, [{
     key: "render",
     value: function render() {
-      var _this7 = this;
+      var _this8 = this;
 
       return React.createElement(
         "div",
@@ -313,7 +320,7 @@ var Filters = function (_React$Component4) {
             "div",
             { className: "slideContainer" },
             React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "0", max: "100", step: "5", onInput: function onInput() {
-                return _this7.props.changeDist(document.getElementById("distanceSlider").value);
+                return _this8.props.changeDist(document.getElementById("distanceSlider").value);
               } })
           ),
           React.createElement("div", { id: "distanceValue" })
@@ -327,7 +334,7 @@ var Filters = function (_React$Component4) {
             "div",
             { className: "slideContainer" },
             React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "3", step: "1", onInput: function onInput() {
-                return _this7.props.changePrice(document.getElementById("priceSlider").value);
+                return _this8.props.changePrice(document.getElementById("priceSlider").value);
               } })
           ),
           React.createElement("div", { id: "priceValue" })
@@ -341,7 +348,7 @@ var Filters = function (_React$Component4) {
             "div",
             { className: "slideContainer" },
             React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "5", step: "1", onInput: function onInput() {
-                return _this7.props.changePeople(document.getElementById("peopleSlider").value);
+                return _this8.props.changePeople(document.getElementById("peopleSlider").value);
               } })
           ),
           React.createElement("div", { id: "peopleValue" })
@@ -355,7 +362,7 @@ var Filters = function (_React$Component4) {
             "div",
             { className: "slideContainer" },
             React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "3", step: "1", onInput: function onInput() {
-                return _this7.props.changeActivity(document.getElementById("activitySlider").value);
+                return _this8.props.changeActivity(document.getElementById("activitySlider").value);
               } })
           ),
           React.createElement("div", { id: "activityValue" })
@@ -384,10 +391,10 @@ var AddPlace = function (_React$Component5) {
   function AddPlace() {
     _classCallCheck(this, AddPlace);
 
-    var _this8 = _possibleConstructorReturn(this, (AddPlace.__proto__ || Object.getPrototypeOf(AddPlace)).call(this));
+    var _this9 = _possibleConstructorReturn(this, (AddPlace.__proto__ || Object.getPrototypeOf(AddPlace)).call(this));
 
-    _this8.handleSubmit = _this8.handleSubmit.bind(_this8);
-    return _this8;
+    _this9.handleSubmit = _this9.handleSubmit.bind(_this9);
+    return _this9;
   }
 
   _createClass(AddPlace, [{
