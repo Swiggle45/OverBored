@@ -39,9 +39,10 @@ function validatePlace(place) {
         return `${field} is required.`;
       }
     }
+  
     if (!validPriceStatus[place.price])
       return `${[place].price} is not a valid price.`;
-      if (!validActivityStatus[place.activityLvl])
+    if (!validActivityStatus[place.activityLvl])
       return `${[place].activityLvl} is not a valid activity level.`;
     return null;
 }
@@ -65,7 +66,7 @@ app.get('/api/results', (req, res) => {
   
 app.post('/api/results', (req, res) => {
     const newPlace = req.body;
-  
+
     const err = validatePlace(newPlace);
     if (err) {
       res.status(422).json({ message: `Invalid request: ${err}` });
