@@ -16,7 +16,7 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <h1><a href="/index.html">OverBored</a></h1>
+        <h1><a href="/landing.html">OverBored</a></h1>
       </header>
     );
   }
