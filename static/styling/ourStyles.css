@@ -110,3 +110,7 @@ main a {
     background: #ffffff;
     cursor: pointer;
 }
+
+#map {
+    height: 100%;
+}

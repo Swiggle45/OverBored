@@ -26,10 +26,10 @@ class MyComponent extends React.Component {
   constructor() {
     super();
     this.state = {
-      price: 2000,
-      distance: 1000,
-      numberOfPeople: 0,
-      activityLvl: 1000
+      price: 3,
+      distance: 25,
+      numberOfPeople: 10,
+      activityLvl: 3
     }
   }
   render() {
@@ -38,19 +38,18 @@ class MyComponent extends React.Component {
         <div id="contents">
           <div id="main">
             <div id="table">
-              <ResultsTable price={this.state.price}
-                dist={this.state.distance}
-                people={this.state.numberOfPeople}
-                activity={this.state.activityLvl} />
+              <ResultsTable priceVar={this.state.price}
+                distVar={this.state.distance}
+                peopleVar={this.state.numberOfPeople}
+                activityVar={this.state.activityLvl} />
             </div>
           </div>
           <div id="line"></div>
           <div id="sidebar">
             <Filters price={this.state.price} changePrice={(price) => this.setState({ price: price })}
-              dist={this.state.distance} changeDist={(dist) => this.setState({ distance: dist })}
-              people={this.state.numberOfPeople} changePeople={(people) => this.setState({ numberOfPeople: people })}
+              dist={this.state.distance} changeDist={(distance) => this.setState({ distance: distance })}
+              people={this.state.numberOfPeople} changePeople={(numberOfPeople) => this.setState({ numberOfPeople: numberOfPeople })}
               activity={this.state.activityLvl} changeActivity={(activity) => this.setState({ activityLvl: activity })} />
-
           </div>
           <div id="sliders">
 
@@ -125,12 +124,12 @@ class ResultsTable extends React.Component {
   }
 
   render() {
-    let priceVar = this.props.price;
-    let distanceVar = this.props.dist;
-    let numberOfPeopleVar = this.props.people;
-    let activityLvlVar = this.props.activity;
+    let priceVar = this.props.priceVar;
+    let distanceVar = parseInt(this.props.distVar);
+    let numberOfPeopleVar = parseInt(this.props.peopleVar);
+    let activityLvlVar = this.props.activityVar;
     this.state.filteredData = this.state.places.filter(function (location) {
-      return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
+      return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople <= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
     });
     let rows = this.state.filteredData.map(location => {
       return <LocationRow key={
@@ -166,7 +165,7 @@ class ResultsTable extends React.Component {
   }
 }
 
-const LocationRow = (props) => {
+let LocationRow = (props) => {
   return (
     <tr>
       <td>
@@ -199,28 +198,28 @@ class Filters extends React.Component {
       <div id="filters">
         <p>Distance<br />
           <div className="slideContainer">
-            <input type="range" className="slider" id="distanceSlider" min="0" max="100" step="5" onInput={() => this.props.changeDist(document.getElementById("distanceSlider").value)} />
+            <input type="range" className="slider" id="distanceSlider" min="0" max="25" step="5" onChange={() => this.props.changeDist(document.getElementById("distanceSlider").value)} />
           </div>
           <div id="distanceValue"></div>
         </p>
 
         <p>Price Range<br />
           <div className="slideContainer">
-            <input type="range" className="slider" id="priceSlider" min="1" max="3" step="1" onInput={() => this.props.changePrice(document.getElementById("priceSlider").value)}></input>
+            <input type="range" className="slider" id="priceSlider" min="1" max="3" step="1" onChange={() => this.props.changePrice(document.getElementById("priceSlider").value)}></input>
           </div>
           <div id="priceValue"></div>
         </p>
 
         <p>Number of People<br />
           <div className="slideContainer">
-            <input type="range" className="slider" id="peopleSlider" min="1" max="5" step="1" onInput={() => this.props.changePeople(document.getElementById("peopleSlider").value)} />
+            <input type="range" className="slider" id="peopleSlider" min="1" max="10" step="1" onChange={() => this.props.changePeople(document.getElementById("peopleSlider").value)} />
           </div>
           <div id="peopleValue"></div>
         </p>
 
         <p>Activity Level<br />
           <div className="slideContainer">
-            <input type="range" className="slider" id="activitySlider" min="1" max="3" step="1" onInput={() => this.props.changeActivity(document.getElementById("activitySlider").value)} />
+            <input type="range" className="slider" id="activitySlider" min="1" max="3" step="1" onChange={() => this.props.changeActivity(document.getElementById("activitySlider").value)} />
           </div>
           <div id="activityValue"></div>
         </p>
@@ -321,7 +320,6 @@ class Sliders extends React.Component {
       activityOut.innerHTML = value;
     }
     return {
-
     }
   }
 }
@@ -358,6 +356,35 @@ function activityEval(activity) {
     return "High";
 
 }
+
+
+window.onload = function() {
+    let startPos;
+    let geoOptions = {
+        timeout: 10 * 1000
+    }
+
+    let geoSuccess = function(position) {
+        startPos = position;
+        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    };
+    let geoError = function(error) {
+        console.log('Error occurred. Error code: ' + error.code);
+        // error.code can be:
+        //   0: unknown error
+        //   1: permission denied
+        //   2: position unavailable (error response from location provider)
+        //   3: timed out
+    };
+
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+};
+
+
+
+
+
 
 ReactDOM.render(<Header />, headerNode);
 ReactDOM.render(<MyComponent />, resultsNode);
