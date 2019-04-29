@@ -357,7 +357,6 @@ function activityEval(activity) {
 
 }
 
-
 window.onload = function() {
     let startPos;
     let geoOptions = {
