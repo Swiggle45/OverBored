@@ -35,7 +35,7 @@ var Header = function (_React$Component) {
           null,
           React.createElement(
             "a",
-            { href: "/index.html" },
+            { href: "/landing.html" },
             "OverBored"
           )
         )
@@ -131,6 +131,7 @@ var ResultsTable = function (_React$Component3) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.loadData();
+      loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ89iDBtg94S6Z9a3Q0i-bsybJ-3YmCI&libraries=places');
     }
   }, {
     key: "componentDidUpdate",
@@ -297,10 +298,7 @@ var Filters = function (_React$Component4) {
   function Filters(props) {
     _classCallCheck(this, Filters);
 
-    var _this7 = _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this, props));
-
-    console.log(props);
-    return _this7;
+    return _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this, props));
   }
 
   _createClass(Filters, [{
@@ -518,27 +516,83 @@ function activityEval(activity) {
 }
 
 window.onload = function () {
-  var startPos = void 0;
-  var geoOptions = {
-    timeout: 10 * 1000
-  };
-
-  var geoSuccess = function geoSuccess(position) {
-    startPos = position;
-    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-  };
-  var geoError = function geoError(error) {
-    console.log('Error occurred. Error code: ' + error.code);
-    // error.code can be:
-    //   0: unknown error
-    //   1: permission denied
-    //   2: position unavailable (error response from location provider)
-    //   3: timed out
-  };
-
-  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+  var myLocation = navigator.geolocation.getCurrentPosition(function (position) {
+    console.log(position);
+  });
 };
+
+function loadJS(src) {
+  var ref = window.document.getElementsByTagName("script")[0];
+  var script = window.document.createElement("script");
+  script.src = src;
+  script.async = true;
+  ref.parentNode.insertBefore(script, ref);
+}
+
+var ARC_DE_TRIOMPHE_POSITION = {
+  lat: 48.873947,
+  lng: 2.295038
+};
+
+var EIFFEL_TOWER_POSITION = {
+  lat: 48.858608,
+  lng: 2.294471
+};
+
+var Map = function (_React$Component7) {
+  _inherits(Map, _React$Component7);
+
+  function Map() {
+    _classCallCheck(this, Map);
+
+    var _this11 = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this));
+
+    _this11.panToArcDeTriomphe = _this11.panToArcDeTriomphe.bind(_this11);
+    return _this11;
+  }
+
+  _createClass(Map, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.map = new google.maps.Map(this.refs.map, {
+        center: EIFFEL_TOWER_POSITION,
+        zoom: 16
+      });
+    }
+  }, {
+    key: "panToArcDeTriomphe",
+    value: function panToArcDeTriomphe() {
+      console.log(this);
+      this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var mapStyle = {
+        width: 500,
+        height: 300,
+        border: '1px solid black'
+      };
+
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "button",
+          { onClick: this.panToArcDeTriomphe },
+          "Go to Arc De Triomphe"
+        ),
+        React.createElement(
+          "div",
+          { ref: "map", style: mapStyle },
+          "I should be a map!"
+        )
+      );
+    }
+  }]);
+
+  return Map;
+}(React.Component);
 
 ReactDOM.render(React.createElement(Header, null), headerNode);
 ReactDOM.render(React.createElement(MyComponent, null), resultsNode);

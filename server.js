@@ -47,6 +47,8 @@ function validatePlace(place) {
     return null;
 }
 
+
+
 app.get('/api/results', (req, res) => {
   const filter = {};
   if (req.query.name) filter.name = req.query.name;

@@ -69,8 +69,10 @@ class ResultsTable extends React.Component {
     this.setFilter = this.setFilter.bind(this);
   }
 
+
   componentDidMount() {
     this.loadData();
+    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ89iDBtg94S6Z9a3Q0i-bsybJ-3YmCI&libraries=places')
   }
 
   componentDidUpdate(prevProps) {
@@ -191,7 +193,6 @@ let LocationRow = (props) => {
 class Filters extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
   render() {
     return (
@@ -358,29 +359,63 @@ function activityEval(activity) {
 }
 
 window.onload = function() {
-    let startPos;
-    let geoOptions = {
-        timeout: 10 * 1000
-    }
+    let myLocation = navigator.geolocation.getCurrentPosition(function(position){
+        console.log(position);
+    });
 
-    let geoSuccess = function(position) {
-        startPos = position;
-        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-    };
-    let geoError = function(error) {
-        console.log('Error occurred. Error code: ' + error.code);
-        // error.code can be:
-        //   0: unknown error
-        //   1: permission denied
-        //   2: position unavailable (error response from location provider)
-        //   3: timed out
-    };
-
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 };
 
+function loadJS(src) {
+    var ref = window.document.getElementsByTagName("script")[0];
+    var script = window.document.createElement("script");
+    script.src = src;
+    script.async = true;
+    ref.parentNode.insertBefore(script, ref);
+}
 
+const ARC_DE_TRIOMPHE_POSITION = {
+    lat: 48.873947,
+    lng: 2.295038
+};
+
+const EIFFEL_TOWER_POSITION = {
+    lat: 48.858608,
+    lng: 2.294471
+};
+
+class Map extends React.Component {
+    constructor() {
+        super();
+        this.panToArcDeTriomphe = this.panToArcDeTriomphe.bind(this);
+    }
+
+    componentDidMount() {
+        this.map = new google.maps.Map(this.refs.map, {
+            center: EIFFEL_TOWER_POSITION,
+            zoom: 16
+        });
+    }
+
+    panToArcDeTriomphe() {
+        console.log(this)
+        this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
+    }
+
+    render() {
+        const mapStyle = {
+            width: 500,
+            height: 300,
+            border: '1px solid black'
+        };
+
+        return (
+            <div>
+                <button onClick={this.panToArcDeTriomphe}>Go to Arc De Triomphe</button>
+                <div ref="map" style={mapStyle}>I should be a map!</div>
+            </div>
+        );
+    }
+}
 
 
 
