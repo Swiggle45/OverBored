@@ -55,10 +55,10 @@ var MyComponent = function (_React$Component2) {
     var _this2 = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
 
     _this2.state = {
-      price: 2000,
-      distance: 1000,
-      numberOfPeople: 0,
-      activityLvl: 1000
+      price: 3,
+      distance: 25,
+      numberOfPeople: 10,
+      activityLvl: 3
     };
     return _this2;
   }
@@ -80,10 +80,10 @@ var MyComponent = function (_React$Component2) {
             React.createElement(
               "div",
               { id: "table" },
-              React.createElement(ResultsTable, { price: this.state.price,
-                dist: this.state.distance,
-                people: this.state.numberOfPeople,
-                activity: this.state.activityLvl })
+              React.createElement(ResultsTable, { priceVar: this.state.price,
+                distVar: this.state.distance,
+                peopleVar: this.state.numberOfPeople,
+                activityVar: this.state.activityLvl })
             )
           ),
           React.createElement("div", { id: "line" }),
@@ -93,11 +93,11 @@ var MyComponent = function (_React$Component2) {
             React.createElement(Filters, { price: this.state.price, changePrice: function changePrice(price) {
                 return _this3.setState({ price: price });
               },
-              dist: this.state.distance, changeDist: function changeDist(dist) {
-                return _this3.setState({ distance: dist });
+              dist: this.state.distance, changeDist: function changeDist(distance) {
+                return _this3.setState({ distance: distance });
               },
-              people: this.state.numberOfPeople, changePeople: function changePeople(people) {
-                return _this3.setState({ numberOfPeople: people });
+              people: this.state.numberOfPeople, changePeople: function changePeople(numberOfPeople) {
+                return _this3.setState({ numberOfPeople: numberOfPeople });
               },
               activity: this.state.activityLvl, changeActivity: function changeActivity(activity) {
                 return _this3.setState({ activityLvl: activity });
@@ -190,12 +190,12 @@ var ResultsTable = function (_React$Component3) {
   }, {
     key: "render",
     value: function render() {
-      var priceVar = this.props.price;
-      var distanceVar = this.props.dist;
-      var numberOfPeopleVar = this.props.people;
-      var activityLvlVar = this.props.activity;
+      var priceVar = this.props.priceVar;
+      var distanceVar = parseInt(this.props.distVar);
+      var numberOfPeopleVar = parseInt(this.props.peopleVar);
+      var activityLvlVar = this.props.activityVar;
       this.state.filteredData = this.state.places.filter(function (location) {
-        return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople >= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
+        return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople <= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
       });
       var rows = this.state.filteredData.map(function (location) {
         return React.createElement(LocationRow, { key: location.name, places: location
@@ -319,7 +319,7 @@ var Filters = function (_React$Component4) {
           React.createElement(
             "div",
             { className: "slideContainer" },
-            React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "0", max: "100", step: "5", onInput: function onInput() {
+            React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "0", max: "25", step: "5", onChange: function onChange() {
                 return _this8.props.changeDist(document.getElementById("distanceSlider").value);
               } })
           ),
@@ -333,7 +333,7 @@ var Filters = function (_React$Component4) {
           React.createElement(
             "div",
             { className: "slideContainer" },
-            React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "3", step: "1", onInput: function onInput() {
+            React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "3", step: "1", onChange: function onChange() {
                 return _this8.props.changePrice(document.getElementById("priceSlider").value);
               } })
           ),
@@ -347,7 +347,7 @@ var Filters = function (_React$Component4) {
           React.createElement(
             "div",
             { className: "slideContainer" },
-            React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "5", step: "1", onInput: function onInput() {
+            React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "10", step: "1", onChange: function onChange() {
                 return _this8.props.changePeople(document.getElementById("peopleSlider").value);
               } })
           ),
@@ -361,7 +361,7 @@ var Filters = function (_React$Component4) {
           React.createElement(
             "div",
             { className: "slideContainer" },
-            React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "3", step: "1", onInput: function onInput() {
+            React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "3", step: "1", onChange: function onChange() {
                 return _this8.props.changeActivity(document.getElementById("activitySlider").value);
               } })
           ),
@@ -516,6 +516,29 @@ function peopleEval(people) {
 function activityEval(activity) {
   if (activity == 1) return "Low";else if (activity == 2) return "Medium";else return "High";
 }
+
+window.onload = function () {
+  var startPos = void 0;
+  var geoOptions = {
+    timeout: 10 * 1000
+  };
+
+  var geoSuccess = function geoSuccess(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  var geoError = function geoError(error) {
+    console.log('Error occurred. Error code: ' + error.code);
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable (error response from location provider)
+    //   3: timed out
+  };
+
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+};
 
 ReactDOM.render(React.createElement(Header, null), headerNode);
 ReactDOM.render(React.createElement(MyComponent, null), resultsNode);
