@@ -20,7 +20,7 @@ const validActivityStatus = {
   '1': true,
   '2': true,
   '3': true
-}
+};
   
 const placeFieldType = {
     name: 'required',
