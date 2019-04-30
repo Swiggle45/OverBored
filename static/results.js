@@ -35,7 +35,7 @@ var Header = function (_React$Component) {
           null,
           React.createElement(
             "a",
-            { href: "/index.html" },
+            { href: "/landing.html" },
             "OverBored"
           )
         )
@@ -57,7 +57,7 @@ var MyComponent = function (_React$Component2) {
     _this2.state = {
       price: 3,
       distance: 25,
-      numberOfPeople: 10,
+      numberOfPeople: 11,
       activityLvl: 3
     };
     return _this2;
@@ -319,7 +319,7 @@ var Filters = function (_React$Component4) {
           React.createElement(
             "div",
             { className: "slideContainer" },
-            React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "0", max: "25", step: "5", onChange: function onChange() {
+            React.createElement("input", { type: "range", className: "slider", id: "distanceSlider", min: "0", max: "25", step: "5", defaultValue: "25", onChange: function onChange() {
                 return _this8.props.changeDist(document.getElementById("distanceSlider").value);
               } })
           ),
@@ -337,7 +337,7 @@ var Filters = function (_React$Component4) {
           React.createElement(
             "div",
             { className: "slideContainer" },
-            React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "3", step: "1", onChange: function onChange() {
+            React.createElement("input", { type: "range", className: "slider", id: "priceSlider", min: "1", max: "3", step: "1", defaultValue: "3", onChange: function onChange() {
                 return _this8.props.changePrice(document.getElementById("priceSlider").value);
               } })
           ),
@@ -355,7 +355,7 @@ var Filters = function (_React$Component4) {
           React.createElement(
             "div",
             { className: "slideContainer" },
-            React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "10", step: "1", onChange: function onChange() {
+            React.createElement("input", { type: "range", className: "slider", id: "peopleSlider", min: "1", max: "11", step: "1", defaultValue: "11", onChange: function onChange() {
                 return _this8.props.changePeople(document.getElementById("peopleSlider").value);
               } })
           ),
@@ -373,7 +373,7 @@ var Filters = function (_React$Component4) {
           React.createElement(
             "div",
             { className: "slideContainer" },
-            React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "3", step: "1", onChange: function onChange() {
+            React.createElement("input", { type: "range", className: "slider", id: "activitySlider", min: "1", max: "3", step: "1", defaultValue: "3", onChange: function onChange() {
                 return _this8.props.changeActivity(document.getElementById("activitySlider").value);
               } })
           ),
