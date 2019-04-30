@@ -323,7 +323,11 @@ var Filters = function (_React$Component4) {
                 return _this8.props.changeDist(document.getElementById("distanceSlider").value);
               } })
           ),
-          React.createElement("div", { id: "distanceValue" })
+          React.createElement(
+            "div",
+            { id: "distanceValue" },
+            distEval(this.props.dist)
+          )
         ),
         React.createElement(
           "p",
@@ -337,7 +341,11 @@ var Filters = function (_React$Component4) {
                 return _this8.props.changePrice(document.getElementById("priceSlider").value);
               } })
           ),
-          React.createElement("div", { id: "priceValue" })
+          React.createElement(
+            "div",
+            { id: "priceValue" },
+            priceEval(this.props.price)
+          )
         ),
         React.createElement(
           "p",
@@ -351,7 +359,11 @@ var Filters = function (_React$Component4) {
                 return _this8.props.changePeople(document.getElementById("peopleSlider").value);
               } })
           ),
-          React.createElement("div", { id: "peopleValue" })
+          React.createElement(
+            "div",
+            { id: "peopleValue" },
+            peopleEval(this.props.people)
+          )
         ),
         React.createElement(
           "p",
@@ -365,7 +377,11 @@ var Filters = function (_React$Component4) {
                 return _this8.props.changeActivity(document.getElementById("activitySlider").value);
               } })
           ),
-          React.createElement("div", { id: "activityValue" })
+          React.createElement(
+            "div",
+            { id: "activityValue" },
+            activityEval(this.props.activity)
+          )
         ),
         React.createElement(
           "p",
@@ -377,7 +393,8 @@ var Filters = function (_React$Component4) {
             { className: "checkContainer" },
             React.createElement("input", { type: "checkbox", id: "ageCheck" })
           )
-        )
+        ),
+        React.createElement("script", null)
       );
     }
   }]);
@@ -510,7 +527,8 @@ function distEval(distance) {
 }
 
 function peopleEval(people) {
-  if (people == 100) return "Any";else return people + " or fewer";
+  if (people >= 11) return "Any";
+  if (people == 1) return people;else return people + " or fewer";
 }
 
 function activityEval(activity) {

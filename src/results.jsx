@@ -52,7 +52,7 @@ class MyComponent extends React.Component {
               activity={this.state.activityLvl} changeActivity={(activity) => this.setState({ activityLvl: activity })} />
           </div>
           <div id="sliders">
-
+            
           </div>
         </div>
       </main>
@@ -200,28 +200,28 @@ class Filters extends React.Component {
           <div className="slideContainer">
             <input type="range" className="slider" id="distanceSlider" min="0" max="25" step="5" onChange={() => this.props.changeDist(document.getElementById("distanceSlider").value)} />
           </div>
-          <div id="distanceValue"></div>
+          <div id="distanceValue">{distEval(this.props.dist)}</div>
         </p>
 
         <p>Price Range<br />
           <div className="slideContainer">
             <input type="range" className="slider" id="priceSlider" min="1" max="3" step="1" onChange={() => this.props.changePrice(document.getElementById("priceSlider").value)}></input>
           </div>
-          <div id="priceValue"></div>
+          <div id="priceValue">{priceEval(this.props.price)}</div>
         </p>
 
         <p>Number of People<br />
           <div className="slideContainer">
             <input type="range" className="slider" id="peopleSlider" min="1" max="10" step="1" onChange={() => this.props.changePeople(document.getElementById("peopleSlider").value)} />
           </div>
-          <div id="peopleValue"></div>
+          <div id="peopleValue">{peopleEval(this.props.people)}</div>
         </p>
 
         <p>Activity Level<br />
           <div className="slideContainer">
             <input type="range" className="slider" id="activitySlider" min="1" max="3" step="1" onChange={() => this.props.changeActivity(document.getElementById("activitySlider").value)} />
           </div>
-          <div id="activityValue"></div>
+          <div id="activityValue">{activityEval(this.props.activity)}</div>
         </p>
 
         <p>Over 21?<br />
@@ -229,6 +229,9 @@ class Filters extends React.Component {
             <input type="checkbox" id="ageCheck"></input>
           </div>
         </p>
+        <script>
+          
+        </script>
       </div>
     );
   }
@@ -341,8 +344,10 @@ function distEval(distance) {
 }
 
 function peopleEval(people) {
-  if (people == 100)
+  if (people >= 11)
     return "Any";
+  if (people == 1)
+    return people;
   else
     return people + " or fewer"
 }
