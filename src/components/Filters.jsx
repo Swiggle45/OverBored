@@ -47,3 +47,38 @@ export default class Filters extends React.Component {
         );
     }
 }
+
+function priceEval(price) {
+    if (price == 1)
+        return "$";
+    else if (price == 2)
+        return "$$";
+    else
+        return "$$$";
+}
+
+function distEval(distance) {
+    if (distance == 0)
+        return "On Campus";
+    else
+        return distance + " miles";
+}
+
+function peopleEval(people) {
+    if (people >= 11)
+        return "Any";
+    if (people == 1)
+        return people;
+    else
+        return people + " or fewer"
+}
+
+function activityEval(activity) {
+    if (activity == 1)
+        return "Low";
+    else if (activity == 2)
+        return "Medium";
+    else
+        return "High";
+
+}

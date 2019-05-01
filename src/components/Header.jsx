@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 export default class Header extends React.Component {
   constructor() {
@@ -9,10 +10,9 @@ export default class Header extends React.Component {
     return (
         <header>
           <h1>
-            <a href="/index.html">OverBored</a>
+              <Link to="/places">OverBored</Link>
           </h1>
         </header>
-
     );
   }
 }
