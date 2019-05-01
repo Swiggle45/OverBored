@@ -3,9 +3,6 @@ const state = [
 ];
 
 // This grabs the DOM element to be used to mount React components.
-var headerNode = document.getElementById("header");
-var contentNode = document.getElementById("contents");
-var sliderNode = document.getElementById("sliders");
 
 class Header extends React.Component {
   constructor() {
@@ -119,6 +116,3 @@ class Sliders extends React.Component {
 }
 
 // This renders the JSX component inside the content node:
-ReactDOM.render(<Header />, headerNode);
-ReactDOM.render(<Filters />, contentNode);
-ReactDOM.render(<Sliders />, sliderNode);

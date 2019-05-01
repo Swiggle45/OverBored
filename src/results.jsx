@@ -1,3 +1,6 @@
+import React from 'react';
+import 'isomorphic-fetch';
+import { Link } from 'react-router';
 
 // This is a place holder for the initial application state.
 const state = [
@@ -5,10 +8,8 @@ const state = [
 ];
 
 // This grabs the DOM element to be used to mount React components.
-var resultsNode = document.getElementById("results");
-var headerNode = document.getElementById("header");
 
-class Header extends React.Component {
+export class Header extends React.Component {
   constructor() {
     super();
   }
@@ -22,7 +23,7 @@ class Header extends React.Component {
   }
 }
 
-class MyComponent extends React.Component {
+export default class MyComponent extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -35,6 +36,9 @@ class MyComponent extends React.Component {
   render() {
     return (
       <main>
+        <header>
+          <h1><a><Link to="/places">OverBored</Link></a></h1>
+        </header>
         <div id="contents">
           <div id="main">
             <div id="table">
@@ -483,6 +487,3 @@ function activityEval(activity) {
 // })(Container)
 
 
-
-ReactDOM.render(<Header />, headerNode);
-ReactDOM.render(<MyComponent />, resultsNode);

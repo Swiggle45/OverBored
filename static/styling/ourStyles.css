@@ -14,11 +14,12 @@ header h1 {
     color: #ffffff;
     padding: 10px;
 }
-h1 a {
+header h1 a {
     font-size: 48px;
     color: #ffffff;
     padding: 10px;
     text-decoration: none;
+    text-align: left;
 }
 h1 a:visited {
     font-size: 48px;

@@ -1,3 +1,8 @@
+import React from 'react';
+import 'isomorphic-fetch';
+import { Link } from 'react-router';
+
+
 
 // This is a place holder for the initial application state.
 const state = [
@@ -5,8 +10,6 @@ const state = [
 ];
 
 // This grabs the DOM element to be used to mount React components.
-var headerNode = document.getElementById("header");
-var contentNode = document.getElementById("contents");
 
 class Header extends React.Component {
   constructor() {
@@ -20,12 +23,11 @@ class Header extends React.Component {
             <a href="/index.html">OverBored</a>
           </h1>
         </header>
-        
     );
   }
 }
 
-class Landing extends React.Component {
+export default class Landing extends React.Component {
   constructor() {
     super();
   }
@@ -35,7 +37,7 @@ class Landing extends React.Component {
       <div>
         <header>
           <h1>
-          <a href="/index.html">OverBored</a>
+            <a><Link to="/places">OverBored</Link></a>
           </h1>
         </header>
         <main>
@@ -43,12 +45,11 @@ class Landing extends React.Component {
             Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you're willing to travel. Have fun!
           </p>
           <a href="/results.html">Start your Search</a>
-      </main>
+          <Link to="/results">Start your Search</Link>
+        </main>
       </div>
       
     );
   }
 }
 
-//ReactDOM.render(<Header />, headerNode);
-ReactDOM.render(<Landing />, contentNode);

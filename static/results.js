@@ -84,6 +84,11 @@ var MyComponent = function (_React$Component2) {
                 distVar: this.state.distance,
                 peopleVar: this.state.numberOfPeople,
                 activityVar: this.state.activityLvl })
+            ),
+            React.createElement(
+              "div",
+              null,
+              React.createElement(Map, null)
             )
           ),
           React.createElement("div", { id: "line" }),
