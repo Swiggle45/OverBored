@@ -21,7 +21,7 @@ header h1 a {
     text-decoration: none;
     text-align: left;
 }
-h1 a:visited {
+header h1 a:visited {
     font-size: 48px;
     color: #ffffff;
     padding: 10px;
