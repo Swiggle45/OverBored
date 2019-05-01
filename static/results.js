@@ -84,6 +84,11 @@ var MyComponent = function (_React$Component2) {
                 distVar: this.state.distance,
                 peopleVar: this.state.numberOfPeople,
                 activityVar: this.state.activityLvl })
+            ),
+            React.createElement(
+              "div",
+              null,
+              React.createElement(Map, null)
             )
           ),
           React.createElement("div", { id: "line" }),
@@ -533,8 +538,15 @@ function activityEval(activity) {
   if (activity == 1) return "Low";else if (activity == 2) return "Medium";else return "High";
 }
 
+var pos = {
+  lat: 0,
+  lng: 0
+};
+
 window.onload = function () {
   var myLocation = navigator.geolocation.getCurrentPosition(function (position) {
+    pos.lat = position.coords.latitude;
+    pos.lng = position.coords.longitude;
     console.log(position);
   });
 };
@@ -553,8 +565,8 @@ var ARC_DE_TRIOMPHE_POSITION = {
 };
 
 var EIFFEL_TOWER_POSITION = {
-  lat: 48.858608,
-  lng: 2.294471
+  lat: pos.lat,
+  lng: pos.long
 };
 
 var Map = function (_React$Component7) {

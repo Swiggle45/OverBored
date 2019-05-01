@@ -1,4 +1,4 @@
-
+import React from 'react';
 // This is a place holder for the initial application state.
 const state = [
 
