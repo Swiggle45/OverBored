@@ -1,4 +1,3 @@
-
 // This is a place holder for the initial application state.
 const state = [
 
@@ -43,6 +42,7 @@ class MyComponent extends React.Component {
                 peopleVar={this.state.numberOfPeople}
                 activityVar={this.state.activityLvl} />
             </div>
+            <div><Map /></div>
           </div>
           <div id="line"></div>
           <div id="sidebar">
@@ -363,6 +363,7 @@ function activityEval(activity) {
 
 }
 
+
 window.onload = function() {
     let myLocation = navigator.geolocation.getCurrentPosition(function(position){
         console.log(position);
@@ -384,8 +385,8 @@ const ARC_DE_TRIOMPHE_POSITION = {
 };
 
 const EIFFEL_TOWER_POSITION = {
-    lat: 48.858608,
-    lng: 2.294471
+    lat: pos.lat,
+    lng: pos.long
 };
 
 class Map extends React.Component {
@@ -399,6 +400,7 @@ class Map extends React.Component {
             center: EIFFEL_TOWER_POSITION,
             zoom: 16
         });
+        
     }
 
     panToArcDeTriomphe() {
