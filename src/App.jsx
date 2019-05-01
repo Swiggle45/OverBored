@@ -4,7 +4,7 @@ import { Router, Route, Redirect, hashHistory, withRouter } from 'react-router';
 
 
 import Landing from './landing.jsx';
-import Results from './Results.jsx';
+import Results from './results.jsx';
 
 var contentNode = document.getElementById("contents");
 
