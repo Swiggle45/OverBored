@@ -12,6 +12,7 @@ const RoutedApp = () => (
   <Router history={hashHistory} >
     <Redirect from="/" to="/places" />
     <Route path="/places" component={withRouter(Landing)} />
+    <Route path="/results" component={withRouter(Results)} />
     <Route path="*" component={NoMatch} />
   </Router>);
 

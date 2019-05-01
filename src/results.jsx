@@ -43,6 +43,7 @@ class MyComponent extends React.Component {
                 peopleVar={this.state.numberOfPeople}
                 activityVar={this.state.activityLvl} />
             </div>
+            
           </div>
           <div id="line"></div>
           <div id="sidebar">
@@ -72,7 +73,7 @@ class ResultsTable extends React.Component {
 
   componentDidMount() {
     this.loadData();
-    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ89iDBtg94S6Z9a3Q0i-bsybJ-3YmCI&libraries=places')
+    //loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ89iDBtg94S6Z9a3Q0i-bsybJ-3YmCI&libraries=places')
   }
 
   componentDidUpdate(prevProps) {
@@ -363,65 +364,123 @@ function activityEval(activity) {
 
 }
 
-window.onload = function() {
-    let myLocation = navigator.geolocation.getCurrentPosition(function(position){
-        console.log(position);
-    });
+// window.onload = function() {
+//     let myLocation = navigator.geolocation.getCurrentPosition(function(position){
+//         console.log(position);
+//     });
 
-};
+// };
 
-function loadJS(src) {
-    var ref = window.document.getElementsByTagName("script")[0];
-    var script = window.document.createElement("script");
-    script.src = src;
-    script.async = true;
-    ref.parentNode.insertBefore(script, ref);
-}
+// function loadJS(src) {
+//     var ref = window.document.getElementsByTagName("script")[0];
+//     var script = window.document.createElement("script");
+//     script.src = src;
+//     script.async = true;
+//     ref.parentNode.insertBefore(script, ref);
+// }
 
-const ARC_DE_TRIOMPHE_POSITION = {
-    lat: 48.873947,
-    lng: 2.295038
-};
+// const ARC_DE_TRIOMPHE_POSITION = {
+//     lat: 48.873947,
+//     lng: 2.295038
+// };
 
-const EIFFEL_TOWER_POSITION = {
-    lat: 48.858608,
-    lng: 2.294471
-};
+// const EIFFEL_TOWER_POSITION = {
+//     lat: 48.858608,
+//     lng: 2.294471
+// };
 
-class Map extends React.Component {
-    constructor() {
-        super();
-        this.panToArcDeTriomphe = this.panToArcDeTriomphe.bind(this);
-    }
+// class Map2 extends React.Component {
+//     constructor() {
+//         super();
+//         this.panToArcDeTriomphe = this.panToArcDeTriomphe.bind(this);
+//     }
 
-    componentDidMount() {
-        this.map = new google.maps.Map(this.refs.map, {
-            center: EIFFEL_TOWER_POSITION,
-            zoom: 16
-        });
-    }
+//     componentDidMount() {
+//         this.map = new google.maps.Map(this.refs.map, {
+//             center: EIFFEL_TOWER_POSITION,
+//             zoom: 16
+//         });
+//     }
 
-    panToArcDeTriomphe() {
-        console.log(this)
-        this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
-    }
+//     panToArcDeTriomphe() {
+//         console.log(this)
+//         this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
+//     }
 
-    render() {
-        const mapStyle = {
-            width: 500,
-            height: 300,
-            border: '1px solid black'
-        };
+//     render() {
+//         const mapStyle = {
+//             width: 500,
+//             height: 300,
+//             border: '1px solid black'
+//         };
 
-        return (
-            <div>
-                <button onClick={this.panToArcDeTriomphe}>Go to Arc De Triomphe</button>
-                <div ref="map" style={mapStyle}>I should be a map!</div>
-            </div>
-        );
-    }
-}
+//         return (
+//             <div>
+//                 <button onClick={this.panToArcDeTriomphe}>Go to Arc De Triomphe</button>
+//                 <div ref="map" style={mapStyle}>I should be a map!</div>
+//             </div>
+//         );
+//     }
+// }
 
+// export class Container extends React.Component {
+//   render() {
+//     const style = {
+//       width: '100vw',
+//       height: '100vh'
+//     }
+//     return (
+//       <div style={style}>
+//         <Map google={this.props.google} />
+//       </div>
+//     )
+//   }
+// }
+
+// export class Map extends React.Component {
+//   componentDidMount() {
+//     this.loadMap();
+//   }
+
+//   componentDidUpdate(prevProps, prevState) {
+//     if (prevProps.google !== this.props.google) {
+//       this.loadMap();
+//     }
+//   }
+
+//   loadMap() {
+//     if (this.props && this.props.google) {
+//       //google is unavailable
+//       const {google} = this.props;
+//       const maps = google.maps;
+
+//       const mapRef = this.refs.map;
+//       const node = ReactDOM.findDOMNode(mapRef);
+
+//       let zoom = 14;
+//       let lat = 37.774929;
+//       let lng = -122.419416;
+//       const center = new maps.LatLng((lat,lng));
+//       const mapConfig = Object.assign({}, {
+//         center: center,
+//         zoom: zoom
+//       })
+//       this.map = new maps.Map(node, mapConfig);
+//     }
+//   }
+
+//   render() {
+//     return (
+//       <div ref='map'>
+//         Loading map...
+//       </div>
+//     )
+//   }
+// }
+
+// export default GoogleApiComponent ({
+//   apiKey: __GAPI_KEY__
+// })(Container)
 
 
 

@@ -131,7 +131,7 @@ var ResultsTable = function (_React$Component3) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.loadData();
-      loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ89iDBtg94S6Z9a3Q0i-bsybJ-3YmCI&libraries=places');
+      //loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ89iDBtg94S6Z9a3Q0i-bsybJ-3YmCI&libraries=places')
     }
   }, {
     key: "componentDidUpdate",
@@ -533,84 +533,124 @@ function activityEval(activity) {
   if (activity == 1) return "Low";else if (activity == 2) return "Medium";else return "High";
 }
 
-window.onload = function () {
-  var myLocation = navigator.geolocation.getCurrentPosition(function (position) {
-    console.log(position);
-  });
-};
+// window.onload = function() {
+//     let myLocation = navigator.geolocation.getCurrentPosition(function(position){
+//         console.log(position);
+//     });
 
-function loadJS(src) {
-  var ref = window.document.getElementsByTagName("script")[0];
-  var script = window.document.createElement("script");
-  script.src = src;
-  script.async = true;
-  ref.parentNode.insertBefore(script, ref);
-}
+// };
 
-var ARC_DE_TRIOMPHE_POSITION = {
-  lat: 48.873947,
-  lng: 2.295038
-};
+// function loadJS(src) {
+//     var ref = window.document.getElementsByTagName("script")[0];
+//     var script = window.document.createElement("script");
+//     script.src = src;
+//     script.async = true;
+//     ref.parentNode.insertBefore(script, ref);
+// }
 
-var EIFFEL_TOWER_POSITION = {
-  lat: 48.858608,
-  lng: 2.294471
-};
+// const ARC_DE_TRIOMPHE_POSITION = {
+//     lat: 48.873947,
+//     lng: 2.295038
+// };
 
-var Map = function (_React$Component7) {
-  _inherits(Map, _React$Component7);
+// const EIFFEL_TOWER_POSITION = {
+//     lat: 48.858608,
+//     lng: 2.294471
+// };
 
-  function Map() {
-    _classCallCheck(this, Map);
+// class Map2 extends React.Component {
+//     constructor() {
+//         super();
+//         this.panToArcDeTriomphe = this.panToArcDeTriomphe.bind(this);
+//     }
 
-    var _this11 = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this));
+//     componentDidMount() {
+//         this.map = new google.maps.Map(this.refs.map, {
+//             center: EIFFEL_TOWER_POSITION,
+//             zoom: 16
+//         });
+//     }
 
-    _this11.panToArcDeTriomphe = _this11.panToArcDeTriomphe.bind(_this11);
-    return _this11;
-  }
+//     panToArcDeTriomphe() {
+//         console.log(this)
+//         this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
+//     }
 
-  _createClass(Map, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.map = new google.maps.Map(this.refs.map, {
-        center: EIFFEL_TOWER_POSITION,
-        zoom: 16
-      });
-    }
-  }, {
-    key: "panToArcDeTriomphe",
-    value: function panToArcDeTriomphe() {
-      console.log(this);
-      this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var mapStyle = {
-        width: 500,
-        height: 300,
-        border: '1px solid black'
-      };
+//     render() {
+//         const mapStyle = {
+//             width: 500,
+//             height: 300,
+//             border: '1px solid black'
+//         };
 
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "button",
-          { onClick: this.panToArcDeTriomphe },
-          "Go to Arc De Triomphe"
-        ),
-        React.createElement(
-          "div",
-          { ref: "map", style: mapStyle },
-          "I should be a map!"
-        )
-      );
-    }
-  }]);
+//         return (
+//             <div>
+//                 <button onClick={this.panToArcDeTriomphe}>Go to Arc De Triomphe</button>
+//                 <div ref="map" style={mapStyle}>I should be a map!</div>
+//             </div>
+//         );
+//     }
+// }
 
-  return Map;
-}(React.Component);
+// export class Container extends React.Component {
+//   render() {
+//     const style = {
+//       width: '100vw',
+//       height: '100vh'
+//     }
+//     return (
+//       <div style={style}>
+//         <Map google={this.props.google} />
+//       </div>
+//     )
+//   }
+// }
+
+// export class Map extends React.Component {
+//   componentDidMount() {
+//     this.loadMap();
+//   }
+
+//   componentDidUpdate(prevProps, prevState) {
+//     if (prevProps.google !== this.props.google) {
+//       this.loadMap();
+//     }
+//   }
+
+//   loadMap() {
+//     if (this.props && this.props.google) {
+//       //google is unavailable
+//       const {google} = this.props;
+//       const maps = google.maps;
+
+//       const mapRef = this.refs.map;
+//       const node = ReactDOM.findDOMNode(mapRef);
+
+//       let zoom = 14;
+//       let lat = 37.774929;
+//       let lng = -122.419416;
+//       const center = new maps.LatLng((lat,lng));
+//       const mapConfig = Object.assign({}, {
+//         center: center,
+//         zoom: zoom
+//       })
+//       this.map = new maps.Map(node, mapConfig);
+//     }
+//   }
+
+//   render() {
+//     return (
+//       <div ref='map'>
+//         Loading map...
+//       </div>
+//     )
+//   }
+// }
+
+// export default GoogleApiComponent ({
+//   apiKey: __GAPI_KEY__
+// })(Container)
+
 
 ReactDOM.render(React.createElement(Header, null), headerNode);
 ReactDOM.render(React.createElement(MyComponent, null), resultsNode);
