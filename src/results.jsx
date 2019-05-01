@@ -1,25 +1,10 @@
-// This is a place holder for the initial application state.
-const state = [
-
-];
+import React from 'react';
+import Header from './components/Header.jsx';
+import ResultsTable from './components/ResultsTable.jsx';
+import Filters from './components/Filters.jsx'
 
 // This grabs the DOM element to be used to mount React components.
 var resultsNode = document.getElementById("results");
-var headerNode = document.getElementById("header");
-
-class Header extends React.Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return (
-      <header>
-        <h1><a href="/landing.html">OverBored</a></h1>
-      </header>
-    );
-  }
-}
 
 class MyComponent extends React.Component {
   constructor() {
@@ -34,6 +19,7 @@ class MyComponent extends React.Component {
   render() {
     return (
       <main>
+      <Header/>
         <div id="contents">
           <div id="main">
             <div id="table">
@@ -56,184 +42,6 @@ class MyComponent extends React.Component {
           </div>
         </div>
       </main>
-    );
-  }
-}
-
-class ResultsTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { places: [] , filteredData: [] };
-
-    this.createPlace = this.createPlace.bind(this);
-    this.setFilter = this.setFilter.bind(this);
-  }
-
-
-  componentDidMount() {
-    this.loadData();
-    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ89iDBtg94S6Z9a3Q0i-bsybJ-3YmCI&libraries=places')
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps === this.props) {
-      return;
-    }
-    this.loadData();
-  }
-
-  loadData() {
-    fetch(`/api/results`).then(response => {
-      if (response.ok) {
-        response.json().then(data => {
-          console.log("Total count of records:", data._metadata.total_count);
-          this.setState({ places: data.records });
-        });
-      } else {
-        response.json().then(error => {
-          alert("Failed to fetch places:" + error.message)
-        });
-      }
-    }).catch(err => {
-      alert("Error in fetching data from server:", err);
-    });
-  }
-
-  createPlace(newPlace) {
-    fetch('/api/results', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newPlace),
-    })
-      .then(res => {
-        if (res.ok) {
-          res.json().then(updatedPlace => {
-            const newPlaces = this.state.places.concat(updatedPlace);
-            this.setState({ places: newPlaces, filteredData: this.state.filteredData });
-          });
-        }
-        else {
-          res.json()
-            .then(error => {
-              alert('Failed to add issue: ' + error.message);
-            });
-        }
-      });
-  }
-
-  setFilter(query) {
-    this.props.router.push({ pathname: this.props.location.pathname, query });
-  }
-
-  render() {
-    let priceVar = this.props.priceVar;
-    let distanceVar = parseInt(this.props.distVar);
-    let numberOfPeopleVar = parseInt(this.props.peopleVar);
-    let activityLvlVar = this.props.activityVar;
-    this.state.filteredData = this.state.places.filter(function (location) {
-      return location.price <= priceVar && location.distance <= distanceVar && location.numberOfPeople <= numberOfPeopleVar && location.activityLvl <= activityLvlVar;
-    });
-    let rows = this.state.filteredData.map(location => {
-      return <LocationRow key={
-        location.name
-      } places={
-        location
-      }
-      />
-    })
-    const borderedStyle = { border: "1px Solid Silver", padding: 6 };
-    return (
-      <div>
-        <div id="newPlace">
-              <AddPlace createPlace={this.createPlace} />
-            </div>
-        <table>
-        <thead>
-          <tr style={borderedStyle}>
-            <th>Location</th>
-            <th>Price</th>
-            <th>Distance</th>
-            <th>Number of People</th>
-            <th>Activity Level</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
-      </div>
-      
-    )
-  }
-}
-
-let LocationRow = (props) => {
-  return (
-    <tr>
-      <td>
-        {props.places.name}
-      </td>
-      <td>
-        {priceEval(props.places.price)}
-      </td>
-      <td>
-        {distEval(props.places.distance)}
-      </td>
-      <td>
-        {peopleEval(props.places.numberOfPeople)}
-      </td>
-      <td>
-        {activityEval(props.places.activityLvl)}
-      </td>
-    </tr>
-  )
-}
-
-
-class Filters extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div id="filters">
-        <p>Distance<br />
-          <div className="slideContainer">
-            <input type="range" className="slider" id="distanceSlider" min="0" max="25" step="5" defaultValue="25" onChange={() => this.props.changeDist(document.getElementById("distanceSlider").value)} />
-          </div>
-          <div id="distanceValue">{distEval(this.props.dist)}</div>
-        </p>
-
-        <p>Price Range<br />
-          <div className="slideContainer">
-            <input type="range" className="slider" id="priceSlider" min="1" max="3" step="1" defaultValue="3" onChange={() => this.props.changePrice(document.getElementById("priceSlider").value)}></input>
-          </div>
-          <div id="priceValue">{priceEval(this.props.price)}</div>
-        </p>
-
-        <p>Number of People<br />
-          <div className="slideContainer">
-            <input type="range" className="slider" id="peopleSlider" min="1" max="11" step="1" defaultValue="11" onChange={() => this.props.changePeople(document.getElementById("peopleSlider").value)} />
-          </div>
-          <div id="peopleValue">{peopleEval(this.props.people)}</div>
-        </p>
-
-        <p>Activity Level<br />
-          <div className="slideContainer">
-            <input type="range" className="slider" id="activitySlider" min="1" max="3" step="1" defaultValue="3" onChange={() => this.props.changeActivity(document.getElementById("activitySlider").value)} />
-          </div>
-          <div id="activityValue">{activityEval(this.props.activity)}</div>
-        </p>
-
-        <p>Over 21?<br />
-          <div className="checkContainer">
-            <input type="checkbox" id="ageCheck"></input>
-          </div>
-        </p>
-        <script>
-          
-        </script>
-      </div>
     );
   }
 }
@@ -363,7 +171,6 @@ function activityEval(activity) {
 
 }
 
-
 window.onload = function() {
     let myLocation = navigator.geolocation.getCurrentPosition(function(position){
         console.log(position);
@@ -379,53 +186,5 @@ function loadJS(src) {
     ref.parentNode.insertBefore(script, ref);
 }
 
-const ARC_DE_TRIOMPHE_POSITION = {
-    lat: 48.873947,
-    lng: 2.295038
-};
 
-const EIFFEL_TOWER_POSITION = {
-    lat: pos.lat,
-    lng: pos.long
-};
-
-class Map extends React.Component {
-    constructor() {
-        super();
-        this.panToArcDeTriomphe = this.panToArcDeTriomphe.bind(this);
-    }
-
-    componentDidMount() {
-        this.map = new google.maps.Map(this.refs.map, {
-            center: EIFFEL_TOWER_POSITION,
-            zoom: 16
-        });
-        
-    }
-
-    panToArcDeTriomphe() {
-        console.log(this)
-        this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
-    }
-
-    render() {
-        const mapStyle = {
-            width: 500,
-            height: 300,
-            border: '1px solid black'
-        };
-
-        return (
-            <div>
-                <button onClick={this.panToArcDeTriomphe}>Go to Arc De Triomphe</button>
-                <div ref="map" style={mapStyle}>I should be a map!</div>
-            </div>
-        );
-    }
-}
-
-
-
-
-ReactDOM.render(<Header />, headerNode);
 ReactDOM.render(<MyComponent />, resultsNode);

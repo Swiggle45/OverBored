@@ -1,18 +1,25 @@
-// NEW: add the webpack config.
+const webpack = require('webpack');
+
 module.exports = {
-    entry: './src/App.jsx',
-    output: {
-      //path: 'static',
-      filename: 'static/app.bundle.js'
+    entry: {
+        app: './src/App.jsx',
+        vendor: ['react', 'react-dom', 'isomorphic-fetch', 'react-router'],
     },
+    output: {
+        filename: 'static/app.bundle.js'
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'static/vendor.bundle.js' })
+    ],
+    devtool: 'source-map',
     module: {
-      loaders: [
-        {
-          test: /\.jsx$/,
-          loader: 'babel-loader',
-          query: {
-            presets: ['react', 'es2015']
-          }
-        },]
+        loaders: [
+            {
+                test: /\.jsx$/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['react', 'es2015']
+                }
+            },]
     }
-  };
+};
