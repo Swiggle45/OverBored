@@ -6,129 +6,6 @@ webpackJsonp([0],{
 "use strict";
 
 
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(83);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactRouter = __webpack_require__(43);
-
-var _landing = __webpack_require__(235);
-
-var _landing2 = _interopRequireDefault(_landing);
-
-var _results = __webpack_require__(237);
-
-var _results2 = _interopRequireDefault(_results);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var contentNode = document.getElementById("contents");
-
-var NoMatch = function NoMatch() {
-  return _react2.default.createElement(
-    'p',
-    null,
-    'Page Not Found'
-  );
-};
-var RoutedApp = function RoutedApp() {
-  return _react2.default.createElement(
-    _reactRouter.Router,
-    { history: _reactRouter.hashHistory },
-    _react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/places' }),
-    _react2.default.createElement(_reactRouter.Route, { path: '/places', component: (0, _reactRouter.withRouter)(_landing2.default) }),
-    _react2.default.createElement(_reactRouter.Route, { path: '/results', component: (0, _reactRouter.withRouter)(_results2.default) }),
-    _react2.default.createElement(_reactRouter.Route, { path: '*', component: NoMatch })
-  );
-};
-
-_reactDom2.default.render(_react2.default.createElement(RoutedApp, null), contentNode);
-
-/***/ }),
-
-/***/ 235:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouter = __webpack_require__(43);
-
-var _Header = __webpack_require__(236);
-
-var _Header2 = _interopRequireDefault(_Header);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// This grabs the DOM element to be used to mount React components.
-
-var Landing = function (_React$Component) {
-  _inherits(Landing, _React$Component);
-
-  function Landing() {
-    _classCallCheck(this, Landing);
-
-    return _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this));
-  }
-
-  _createClass(Landing, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { id: 'contents' },
-        _react2.default.createElement(_Header2.default, null),
-        _react2.default.createElement(
-          'main',
-          null,
-          _react2.default.createElement(
-            'p',
-            null,
-            'Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you\'re willing to travel. Have fun!'
-          ),
-          _react2.default.createElement(
-            _reactRouter.Link,
-            { to: '/results' },
-            'Start your search!'
-          )
-        )
-      );
-    }
-  }]);
-
-  return Landing;
-}(_react2.default.Component);
-
-exports.default = Landing;
-
-/***/ }),
-
-/***/ 236:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -184,7 +61,130 @@ exports.default = Header;
 
 /***/ }),
 
+/***/ 121:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(83);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouter = __webpack_require__(43);
+
+var _landing = __webpack_require__(237);
+
+var _landing2 = _interopRequireDefault(_landing);
+
+var _results = __webpack_require__(238);
+
+var _results2 = _interopRequireDefault(_results);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var contentNode = document.getElementById("contents");
+
+var NoMatch = function NoMatch() {
+  return _react2.default.createElement(
+    'p',
+    null,
+    'Page Not Found'
+  );
+};
+var RoutedApp = function RoutedApp() {
+  return _react2.default.createElement(
+    _reactRouter.Router,
+    { history: _reactRouter.hashHistory },
+    _react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/places' }),
+    _react2.default.createElement(_reactRouter.Route, { path: '/places', component: (0, _reactRouter.withRouter)(_landing2.default) }),
+    _react2.default.createElement(_reactRouter.Route, { path: '/results', component: (0, _reactRouter.withRouter)(_results2.default) }),
+    _react2.default.createElement(_reactRouter.Route, { path: '*', component: NoMatch })
+  );
+};
+
+_reactDom2.default.render(_react2.default.createElement(RoutedApp, null), contentNode);
+
+/***/ }),
+
 /***/ 237:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = __webpack_require__(43);
+
+var _Header = __webpack_require__(119);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// This grabs the DOM element to be used to mount React components.
+
+var Landing = function (_React$Component) {
+  _inherits(Landing, _React$Component);
+
+  function Landing() {
+    _classCallCheck(this, Landing);
+
+    return _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this));
+  }
+
+  _createClass(Landing, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { id: 'contents' },
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(
+          'main',
+          null,
+          _react2.default.createElement(
+            'p',
+            null,
+            'Welcome to OverBored! Use this application to figure out what to do with your friends instead of sitting around being bored. Filter activities based on price, activity level, number of people, and how far away you\'re willing to travel. Have fun!'
+          ),
+          _react2.default.createElement(
+            _reactRouter.Link,
+            { to: '/results' },
+            'Start your search!'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Landing;
+}(_react2.default.Component);
+
+exports.default = Landing;
+
+/***/ }),
+
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -200,9 +200,9 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(239);
+__webpack_require__(120);
 
-var _Header = __webpack_require__(236);
+var _Header = __webpack_require__(119);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -652,5 +652,5 @@ function activityEval(activity) {
 
 /***/ })
 
-},[119]);
+},[121]);
 //# sourceMappingURL=app.bundle.js.map
